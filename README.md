@@ -3,6 +3,7 @@ Basic template for scarletsframe
 
 ## Getting started
 ```sh
+$ git clone --depth 1 https://github.com/StefansArya/scarletsframe-default
 $ npm i
 $ npm i -g gulp
 ```

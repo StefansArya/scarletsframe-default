@@ -3,11 +3,12 @@ var path = {
 	versioning:'./public/index.html',
 	server:{
 		// proxy:'http://myjs.sandbox',
-		
-		baseDir:'./public',
-		index:'index.html',
-
 		port:7590, // accessible-> http://localhost:7590
+
+		server:{
+			baseDir:'./public',
+			index:'index.html',
+		}
 	},
 
 	js:{
@@ -179,7 +180,7 @@ gulp.task('html', function(){
 gulp.task('browser-sync', function(){
 	notifier = require('node-notifier');
 	browserSync = require('browser-sync');
-	browserSync.init(null, {server:path.server});
+	browserSync.init(null, path.server);
 });
 
 // To be executed on Development computer
