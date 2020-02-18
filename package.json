@@ -1,6 +1,6 @@
 {
   "name": "template-default",
   "devDependencies": {
-    "sfcompiler.js":"^0.0.1"
+    "@scarletsframe/compiler":"^0.0.1"
   }
 }
