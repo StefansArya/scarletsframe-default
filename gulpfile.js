@@ -4,9 +4,9 @@ function translates(text, target, callback){
 	translate(path.translate.defaultLang, target, text, callback);
 }
 
-process.stdout.write("Loading sfcompiler.js\r");
+process.stdout.write("Loading scarletsframe-compiler\r");
 
-require("sfcompiler.js")({
+require("scarletsframe-compiler")({
 	// ===== Modify me, add slash as last character if it's directory =====
 	path:{
 		versioning:'public/index.html',
