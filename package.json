@@ -1,5 +1,9 @@
 {
   "name": "template-default",
+  "scripts": {
+  	"start":"gulp",
+  	"compile":"gulp compile"
+  },
   "devDependencies": {
     "scarletsframe-compiler":"^0.0.1"
   }
