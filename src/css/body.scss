@@ -1,0 +1,54 @@
+html, body {
+	background-color: #fff;
+	color: #636b6f;
+	font-family: 'Nunito', sans-serif;
+	font-weight: 100;
+	height: 100%;
+	width: 100%;
+	overflow: hidden;
+	margin: 0;
+}
+
+sf-m{
+	display: block;
+}
+
+vw-ground{
+	overflow: hidden;
+	display: block;
+	height: 100vh;
+	width: 100vw;
+}
+
+sf-page-view{
+	display: block;
+	visibility: hidden;
+	position: absolute;
+	overflow: hidden;
+	width: 100%;
+	height: 100%;
+
+	&.page-current{
+		visibility: visible;
+		position: relative;
+
+		&.anim-pending .page-current{
+			visibility: hidden;
+		}
+	}
+}
+
+.disable-anim{
+	transition-delay: 0s;
+	transition-duration: 0s;
+	opacity: 0;
+	pointer-events: none; 
+}
+
+.anim-parent{
+	.anim-element{
+		backface-visibility: hidden;
+		transform-style: preserve-3d;
+		transform: translate3d(0, 0, 0);
+	}
+}

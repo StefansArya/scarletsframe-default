@@ -5,23 +5,38 @@
 	<title>Home</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<!-- <script src="https://cdn.jsdelivr.net/npm/scarletsframe@latest"></script> -->
+	<script src="http://localhost/libraryproject/ScarletsFrame/dist/scarletsframe.min.js?3"></script>
 </head>
-<body>
-	<!-- Assets Loader -->
+<body style="visibility: hidden;">
+
+	<!-- Assets Loader (Optional) -->
 	<script type="text/javascript">
+		var cf_cdn = 'https://cdnjs.cloudflare.com/ajax/libs';
+
+		// Register sf.dom to global
+		$ = sf.dom;
+
 		// https://www.npmjs.com/package/scarletsframe#asset-loader
 		sf.loader.css([
-			"/assets/mycss.min.css?1575826855860",
+			"/assets/mycss.min.css?1582003594150",
+			cf_cdn+'/animate.css/3.7.0/animate.min.css',
+			"https://fonts.googleapis.com/css?family=Nunito",
 		]);
 
 		sf.loader.js([
-			"/assets/myjs.min.js?1575826851108"
+			"/assets/myjs.min.js?1582002568006",
+			"/assets/myhtml.html.js?1582002298624",
 		]);
 
 		sf(function(){
 			// Loader finish
-			
+			console.log("Let's initialize your application");
+			document.body.style.visibility = '';
 		});
 	</script>
+
+	<!-- Your Views -->
+	<vw-myview></vw-myview>
 </body>
 </html>

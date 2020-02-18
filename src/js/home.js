@@ -1,17 +1,25 @@
 // https://www.npmjs.com/package/scarletsframe#initializedefine-model
-
-sf.model.for('home', function(self, root){
+sf.model.for('example', function(self, root){
 	self.message = "Hello";
+	self.description = "Developers! ";
 
 	self.init = function(){
-		var pending = ' World'.split('');
+		setTimeout(textAnimation, 2000);
+	}
 
-		// Add character every 100ms
+	self.toPage2 = function(){
+		views.goto('/page2');
+	}
+
+	function textAnimation(){
+		var description = "Let's getting started!".split('');
+
+		// Text animation
 		var interval = setInterval(function(){
-			self.message += pending.shift();
+			self.description += description.shift();
 
-			if(pending.length === 0)
+			if(description.length === 0)
 				clearInterval(interval);
-		}, 100);
+		}, 50);
 	}
 });
