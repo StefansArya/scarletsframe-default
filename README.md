@@ -3,17 +3,21 @@ Basic template for scarletsframe
 
 ## Getting started
 ```sh
-$ git clone --depth 1 https://github.com/StefansArya/scarletsframe-default
-$ npm i
-$ npm i -g gulp
+$ npm i -g scarletsframe-cli
+$ scarletsframe init default
+
+# Compile the default template
+$ npm compile
 ```
 
 ## Starting the server
 ```sh
-$ gulp
+$ npm start
 ```
 
 After starting gulp, you will being redirected to your browser automatically.
+
+If you haven't compile your project, then you need to save any `.js .scss .html` file from `/src` folder.
 
 ## Modifying the code
 The `/public` folder have default `index.html` for getting started, and your `css` and `js` should be written into `/src` folder to get the live reload from browser-sync.
@@ -23,5 +27,5 @@ But usually you will have to modify some parameter on the `/gulpfile.js`.
 ## Compiling the code
 The compilation process will minify your code and also run Babel transpiler to support low end browser.
 ```sh
-$ gulp compile
+$ npm compile
 ```
