@@ -27,11 +27,11 @@ require("scarletsframe-compiler")({
 	compilePath:{
 		// Will be processed from the top to bottom
 		js:[
-			//'src/js/startup_init/_variable.js',
-			'src/js/**/*.js',
+			//'src/startup_init/_variable.js',
+			'src/**/*.js',
 		],
-		css:'src/css/**/*.scss',
-		html:'src/html/**/*.html',
+		css:'src/**/*.scss',
+		html:'src/**/*.html',
 
 		// Watch changes and apply changes directly without combine to one file
 		// template:['resources/plate/**/*.php', 'resources/views/**/*.php']
@@ -39,7 +39,7 @@ require("scarletsframe-compiler")({
 
 	browserSync:{
 		// proxy:'http://myjs.sandbox',
-		port:7590, // accessible-> http://localhost:7590
+		port:5678, // accessible-> http://localhost:5678
 		ghostMode: false,
 
 		// Standalone server with BrowserSync

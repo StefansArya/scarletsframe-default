@@ -3,7 +3,12 @@ var views = sf.views('vw-myview', 'myview');
 views.addRoute([
 	{
 	    path:'/',
-	    template:'example',
+
+	    // Relative to `/src` directory path
+	    // If you modify the `/src` structure you also need to modify `compilePath` from `gulpfile.js` 
+	    template:'vw-myview/example',
+
+	    // Event listener for current route
 	    on:{
 	      coming:function(){
 	        console.log('henlo from / route');
@@ -14,23 +19,23 @@ views.addRoute([
 	    },
 	}, {
 	    path:'/page2',
-	    template:'page2',
+	    template:'vw-myview/page2',
+
+	    // Run something before going to this route
 	    beforeRoute:function(data){
 	      console.log("Before route data:", data);
 	    },
 	},
 ]);
 
+// Useful for making loading bar when waiting HTTP request
 views.on('routeStart', function(current, target) {
 	// loading(true);
 });
 
-views.on('routeFinish', function(current, target, data) {
+// Route finished
+views.on('routeFinish routeCached', function(current, target, data) {
 	// loading(false);
-	animatePageTransition(views);
-});
-
-views.on('routeCached', function(current, target) {
 	animatePageTransition(views);
 });
 

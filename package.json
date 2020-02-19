@@ -5,6 +5,6 @@
   	"compile":"gulp compile"
   },
   "devDependencies": {
-    "scarletsframe-compiler":"^0.0.2"
+    "scarletsframe-compiler":"^0.0.4"
   }
 }
