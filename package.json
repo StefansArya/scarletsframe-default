@@ -1,10 +1,12 @@
 {
   "name": "template-default",
   "scripts": {
-  	"start":"gulp",
-  	"compile":"gulp compile"
+    "start": "gulp",
+    "compile": "gulp compile"
   },
-  "devDependencies": {
-    "scarletsframe-compiler":"^0.0.4"
+  "dependencies": {
+    "@babel/core": "^7.7.2",
+    "@babel/preset-env": "^7.8.6",
+    "scarletsframe-compiler": "^0.0.7"
   }
 }

@@ -7,46 +7,50 @@ function translates(text, target, callback){
 process.stdout.write("Loading scarletsframe-compiler\r");
 
 require("scarletsframe-compiler")({
-	// ===== Modify me, add slash as last character if it's directory =====
-	path:{
-		versioning:'public/index.html',
-		js:{
-			folder:'public/assets/',
-			file:'myjs.min.js'
-		},
-		css:{
-			folder:'public/assets/',
-			file:'mycss.min.css'
-		},
-		html:{
-			folder:'public/assets/',
-			file:'myhtml.html.js'
-		}
-	},
-
-	compilePath:{
-		// Will be processed from the top to bottom
-		js:[
-			//'src/startup_init/_variable.js',
-			'src/**/*.js',
-		],
-		css:'src/**/*.scss',
-		html:'src/**/*.html',
-
-		// Watch changes and apply changes directly without combine to one file
-		// template:['resources/plate/**/*.php', 'resources/views/**/*.php']
-	},
-
+	// Start the server
 	browserSync:{
 		// proxy:'http://myjs.sandbox',
-		port:5678, // accessible-> http://localhost:5678
-		ghostMode: false,
+		port:6789, // Accessible-> http://localhost:6789
+		ghostMode: false, // Use synchronization between browser?
 
 		// Standalone server with BrowserSync
 		server:{
 			baseDir:'public/',
 			index:'index.html',
 		}
+	},
+
+	// Optional if you want to remove source map on production mode
+	includeSourceMap: process.env.production || true,
+
+	// ===== Modify me, add slash as last character if it's directory =====
+	path:{
+		// Use `default` if you're not exporting project as library/module
+		default:{
+			versioning:'public/index.html',
+			stripURL:'public/', // 'public/' will be removed from script/css URL on the HTML
+
+			js:{
+				file:'public/assets/myjs.min.js',
+
+				// Will be processed from the top to bottom
+				combine:[
+					//'src/startup_init/_variable.js',
+					'src/**/*.js',
+				],
+			},
+			scss:{
+				file:'public/assets/mycss.min.css',
+				combine:'src/**/*.scss',
+			},
+			html:{
+				file:'public/assets/myhtml.html.js',
+				combine:'src/**/*.html',
+
+				// Watch changes and apply changes directly without combine to one file
+				// static:['resources/plate/**/*.php', 'resources/views/**/*.php'],
+			}
+		},
 	},
 
 	// Flag the element with `sf-lang` attribute to get translation
@@ -78,6 +82,4 @@ require("scarletsframe-compiler")({
 		similarity:0.6,
 		retranslate:true
 	},
-
-	includeSourceMap:true,
 }, require('gulp'));
