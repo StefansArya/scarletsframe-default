@@ -1,5 +1,5 @@
 // https://www.npmjs.com/package/scarletsframe#router--views
-var views = sf.views('vw-myview', 'myview');
+var views = new sf.views('vw-myview', 'myview');
 views.addRoute([
 	{
 	    path:'/',
