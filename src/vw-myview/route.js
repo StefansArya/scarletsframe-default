@@ -26,20 +26,35 @@ views.addRoute([
 	      console.log("Before route data:", data);
 	    },
 	},
-]);
+])
+
+// Will be called before navigating
+.on('start', function(current, target) {
+	// Save or delete stuff maybe?
+});
 
 // Useful for making loading bar when waiting HTTP request
-views.on('routeStart', function(current, target) {
+.on('loading', function(current, totalDepth){
 	// loading(true);
-});
+})
 
-// Route finished
-views.on('routeFinish routeCached', function(current, target, data) {
+// Will be called after new DOM was inserted into views
+.on('loaded', function(current, totalDepth, element) {
+	// Initialize some element with your library maybe
+	// like lazy image element
+
+	// LazyImage.init(element);
+})
+
+// Will be called after successfully navigated
+.on('finish', function(current, target, data){
 	// loading(false);
 	animatePageTransition(views);
-});
+})
 
-views.on('routeError', function(e) {
-	console.warn(e);
-	// loading(false);
-});
+// When any route error happen
+.on('error', console.error);
+
+sf.views.onCrossing = function(url, target){
+	console.log("What should we do with cross domain URL?", url, target);
+}
