@@ -7,6 +7,6 @@
   "dependencies": {
     "@babel/core": "^7.7.2",
     "@babel/preset-env": "^7.8.6",
-    "scarletsframe-compiler": "^0.0.7"
+    "scarletsframe-compiler": "^0.0.10"
   }
 }

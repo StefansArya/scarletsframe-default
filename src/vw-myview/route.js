@@ -5,7 +5,7 @@ views.addRoute([
 	    path:'/',
 
 	    // Relative to `/src` directory path
-	    // If you modify the `/src` structure you also need to modify `compilePath` from `gulpfile.js` 
+	    // If you modify the `/src` structure you also need to modify `compilePath` from `gulpfile.js`
 	    template:'vw-myview/example',
 
 	    // Event listener for current route
@@ -31,7 +31,7 @@ views.addRoute([
 // Will be called before navigating
 .on('start', function(current, target) {
 	// Save or delete stuff maybe?
-});
+})
 
 // Useful for making loading bar when waiting HTTP request
 .on('loading', function(current, totalDepth){
