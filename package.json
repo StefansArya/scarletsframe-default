@@ -5,8 +5,8 @@
     "compile": "gulp compile"
   },
   "dependencies": {
-    "@babel/core": "^7.7.2",
-    "@babel/preset-env": "^7.8.6",
-    "scarletsframe-compiler": "^0.0.10"
+    "@babel/core": "^7.10.4",
+    "@babel/preset-env": "^7.10.4",
+    "scarletsframe-compiler": "^0.0.11"
   }
 }

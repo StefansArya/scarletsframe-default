@@ -22,6 +22,13 @@ require("scarletsframe-compiler")({
 
 	// Optional if you want to remove source map on production mode
 	includeSourceMap: process.env.production || true,
+	timestampSourceMap: false,
+	hotReload:{
+		html: true,
+		js: true,
+		scss: true,
+		static: true, // A template written on PHP or others
+	},
 
 	// ===== Modify me, add slash as last character if it's directory =====
 	path:{
@@ -63,7 +70,7 @@ require("scarletsframe-compiler")({
 
 		// Folder to be scanned
 		folder:[
-			{prefix:'component', path:'src/html'},
+			{prefix:'component', path:'src/vw-myview'},
 			{prefix:'js', path:'src/js', flag:'js'}, // Flag this as javascript
 			// {save:'resources/lang', path:'app', flag:'php'}, // Flag this as PHP
 		],

@@ -5,7 +5,20 @@
 	<title>Home</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<script src="https://cdn.jsdelivr.net/npm/scarletsframe@0.28.5/dist/scarletsframe.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/scarletsframe@0.28.9/dist/scarletsframe.hot.js"></script>
+
+	<script type="text/javascript">
+	  // Polyfill for Safari and Firefox
+	  (function(){function z(a){document.write('<script src="'+a+'"><\/script>')}
+	    if(window.PointerEvent === void 0)
+	      z('https://code.jquery.com/pep/0.4.3/pep.js');
+	  })();
+
+	  // 1 = Will not replace model/component value (only replace function)
+	  // 2 = Replace all
+	  if(sf.hotReload !== void 0)
+		  sf.hotReload(2);
+	</script>
 </head>
 <body style="visibility: hidden;">
 
@@ -24,11 +37,11 @@
 		]);
 
 		sf.loader.js([
-			"/assets/myjs.min.js?1589520813560",
-			"/assets/myhtml.html.js?1583237473408",
+			"/assets/myjs.min.js?1594057577535",
+			"/assets/myhtml.html.js?1594058273102",
 		]);
 
-		sf(function(){
+		$(function(){
 			// Loader finish
 			console.log("Let's initialize your application");
 			document.body.style.visibility = '';
