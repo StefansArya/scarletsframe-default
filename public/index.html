@@ -7,6 +7,9 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<script src="https://cdn.jsdelivr.net/npm/scarletsframe@0.28.9/dist/scarletsframe.hot.js"></script>
 
+	<!-- Use this on production, instead of scarletsframe.hot.js -->
+	<!-- <script src="https://cdn.jsdelivr.net/npm/scarletsframe@0.28.9/dist/scarletsframe.min.js"></script> -->
+
 	<script type="text/javascript">
 	  // Polyfill for Safari and Firefox
 	  (function(){function z(a){document.write('<script src="'+a+'"><\/script>')}
@@ -14,6 +17,7 @@
 	      z('https://code.jquery.com/pep/0.4.3/pep.js');
 	  })();
 
+	  // Only available on scarletsframe.hot.js (Only for development env)
 	  // 1 = Will not replace model/component value (only replace function)
 	  // 2 = Replace all
 	  if(sf.hotReload !== void 0)
