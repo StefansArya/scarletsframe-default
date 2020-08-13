@@ -12,26 +12,8 @@ var translate = null;
 var options = null;
 var left = 0;
 
-function initOption(){
-	// var tunnel = require('tunnel');
-	options = {
-		headers: {
-			'User-Agent': 'Translation Bot/1.0'
-		},
-
-		// https://www.free-proxy-list.com/?page=&port=&speed%5B%5D=3&connect_time%5B%5D=3&up_time=90&search=Search
-		// agent: tunnel.httpsOverHttp({
-		//     proxy: { 
-		//     	host: '209.90.63.108',
-		//     	port: '80'
-		//     }
-		// })
-	};
-}
-
 module.exports = function(from, target, text, callback){
 	if(translate === null){
-		initOption();
 		_ = require('lodash');
 		resetTimer = _.debounce(function(){transTimer = 0}, 2000);
 		translate = require('@vitalets/google-translate-api');
@@ -59,9 +41,8 @@ module.exports = function(from, target, text, callback){
 			callback(text);
 			console.error("\nCan't translate:", target, err.message);
 
-			for(var val of timerSet.values()){
+			for(var val of timerSet.values())
 				clearTimeout(val);
-			}
 
 			timerSet.clear();
 		});

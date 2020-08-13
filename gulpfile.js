@@ -1,7 +1,8 @@
 // Apply your own translator there
 var translate = require('./translates.js');
 function translates(text, target, callback){
-	translate(path.translate.defaultLang, target, text, callback);
+  // Assume that our default language on every template is en_US
+	translate('en_US', target, text, callback);
 }
 
 process.stdout.write("Loading scarletsframe-compiler\r");
@@ -12,6 +13,7 @@ require("scarletsframe-compiler")({
 		// proxy:'http://myjs.sandbox',
 		port:6789, // Accessible-> http://localhost:6789
 		ghostMode: false, // Use synchronization between browser?
+		ui: false, // Disable BrowserSync UI
 
 		// Standalone server with BrowserSync
 		server:{
