@@ -11,14 +11,14 @@ require("scarletsframe-compiler")({
 	// Start the server
 	browserSync:{
 		// proxy:'http://myjs.sandbox',
-		port:6789, // Accessible-> http://localhost:6789
+		port: process.env.PORT || 6789, // Accessible-> http://localhost:6789
 		ghostMode: false, // Use synchronization between browser?
 		ui: false, // Disable BrowserSync UI
 
 		// Standalone server with BrowserSync
 		server:{
-			baseDir:'public/',
-			index:'index.html',
+			baseDir: 'public/',
+			index: 'index.html',
 		}
 	},
 
