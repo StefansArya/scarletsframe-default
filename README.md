@@ -35,3 +35,11 @@ The compilation process will minify your code and also run Babel transpiler to s
 ```sh
 $ npm compile
 ```
+
+## For automatic build online service
+If you're using automatic build service you can specify this on the settings.<br>
+> Build Command       : npm run compile
+> Output Directory    : public
+> Development Command : npm start
+
+`Build command` is a command for compiling the source and the compiled files will be placed on public folder (configured on `gulpfiles.js`). `Development Command` is a command for starting the compiler server so you can use hot reload feature if you editing the source somewhere.

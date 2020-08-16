@@ -1,5 +1,6 @@
 {
   "name": "template-default",
+  "license": "MIT",
   "scripts": {
     "start": "gulp",
     "compile": "gulp compile"

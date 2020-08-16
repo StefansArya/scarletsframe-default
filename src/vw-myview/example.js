@@ -1,4 +1,5 @@
 // https://www.npmjs.com/package/scarletsframe#initializedefine-model
+// To change the hot reload behaviour, go to public/index.html
 sf.model("example", function (self, root) {
 	// Shared model properties
 	self.message = "Hello";
