@@ -5,9 +5,17 @@
     "start": "gulp",
     "compile": "gulp compile"
   },
-  "dependencies": {
+  "devDependencies": {
     "@babel/core": "^7.10.4",
     "@babel/preset-env": "^7.10.4",
+    "node-notifier": "^7.0.2",
     "scarletsframe-compiler": "^0.1.2"
+  },
+  "-- include this deps if you want to compile .js as module": {
+    "@rollup/plugin-commonjs": "*",
+    "@rollup/plugin-node-resolve": "*",
+    "@rollup/stream": "*",
+    "gulp-better-rollup": "^4.0.1",
+    "rollup": "^2.26.3"
   }
 }

@@ -1,19 +1,16 @@
-// Apply your own translator there
-var translate = require('./translates.js');
-function translates(text, target, callback){
-  // Assume that our default language on every template is en_US
-	translate('en_US', target, text, callback);
-}
-
 process.stdout.write("Loading scarletsframe-compiler\r");
 
+var translates = require('./translates.js');
+var notifier = require('node-notifier');
+
 require("scarletsframe-compiler")({
-	// Start the server
+	// Start the server with BrowserSync
 	browserSync:{
 		// proxy:'http://myjs.sandbox',
 		port: process.env.PORT || 6789, // Accessible-> http://localhost:6789
 		ghostMode: false, // Use synchronization between browser?
 		ui: false, // Disable BrowserSync UI
+		open: false, // Don't automatically open browser
 
 		// Standalone server with BrowserSync
 		server:{
@@ -39,6 +36,16 @@ require("scarletsframe-compiler")({
 			versioning:'public/index.html',
 			stripURL:'public/', // 'public/' will be removed from script/css URL on the HTML
 
+			// ** Optional Feature: js module **
+			// js:{
+			// 	file:'public/assets/myjs.min.js',
+			// 	module: {
+			// 		from: 'src/init.js',
+			// 		format: 'cjs', // cjs | iife | umd
+			// 	},
+			// },
+
+			// ** Optional Feature: combined js files**
 			js:{
 				file:'public/assets/myjs.min.js',
 
@@ -48,6 +55,7 @@ require("scarletsframe-compiler")({
 					'src/**/*.js',
 				],
 			},
+
 			scss:{
 				file:'public/assets/mycss.min.css',
 				combine:'src/**/*.scss',
@@ -62,6 +70,14 @@ require("scarletsframe-compiler")({
 		},
 	},
 
+	onCompiled: function(which){
+		notifier.notify({
+			title: 'Gulp Compilation',
+			message: which+' was finished!'
+		});
+	},
+
+	// ** Optional Feature: translate **
 	// Flag the element with `sf-lang` attribute to get translation
 	// Any value on innerText will being used as default language value
 	translate:{
@@ -84,7 +100,11 @@ require("scarletsframe-compiler")({
 		// Available language will be saved here
 		saveDir:'public/assets/languages',
 		on:{
-			translate:translates
+			// Apply your own translator there
+			translate: function translates(text, target, callback){
+				// Assume that our default language on every JS or HTML template is en_US
+				translates('en_US', target, text, callback);
+			}
 		},
 
 		// if changed text not similar, new index will be created
