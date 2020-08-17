@@ -48,9 +48,9 @@ There are a default template for deploying into `gh-pages` branch on `/.github/w
 
 ### For automatic build on some online service
 If you're using automatic build you can specify this on the settings.<br>
-> Build Command       : npm run compile
-> Output Directory    : public
-> Development Command : npm start
+> Build Command       : npm run compile<br>
+> Output Directory    : public<br>
+> Development Command : npm start<br>
 
 `Build command` is a command for compiling the source and the compiled files will be placed on public folder (configured on `gulpfiles.js`). `Development Command` is a command for starting the compiler server so you can use hot reload feature if you editing the source somewhere.
 
