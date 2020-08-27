@@ -41,7 +41,7 @@ require("scarletsframe-compiler")({
 			// 	file:'public/assets/myjs.min.js',
 			// 	module: {
 			// 		from: 'src/init.js',
-			// 		format: 'cjs', // cjs | iife | umd
+			// 		format: 'cjs', // https://rollupjs.org/repl/
 			// 	},
 			// },
 
