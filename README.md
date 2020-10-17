@@ -46,13 +46,13 @@ You can modify some parameter on the `/gulpfile.js` if you want to have differen
 ## GitHub Pages
 There are a default template for deploying into `gh-pages` branch on `/.github/workflows/gh-pages.yml-template`. To use it you just need to rename it to `gh-pages.yml`. Then go to your project settings, scroll down, and configure your GitHub Pages.
 
-### For automatic build on some online service
-If you're using automatic build you can specify this on the settings.<br>
+### For automatic build on Vercel
+If you're using Vercel you can specify this on the settings.<br>
 > Build Command       : npm run compile<br>
 > Output Directory    : public<br>
 > Development Command : npm start<br>
 
-`Build command` is a command for compiling the source and the compiled files will be placed on public folder (configured on `gulpfiles.js`). `Development Command` is a command for starting the compiler server so you can use hot reload feature if you editing the source somewhere.
+`Build command` is a command for compiling the source and the compiled files will be placed on public folder (configured on `gulpfile.js`). `Development Command` is a command for starting the compiler server so you can use hot reload feature if you editing the source somewhere.
 
 ### License
 MIT
