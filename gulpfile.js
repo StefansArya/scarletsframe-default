@@ -9,8 +9,10 @@ process.stdout.write("Loading scarletsframe-compiler\r");
 
 var translates = require('./translates.js');
 
-// var notifier = require('node-notifier'); // For other OS
-var notifier = new require('node-notifier/notifiers/balloon')(); // For Windows
+var os = require('os');
+var notifier = os.platform() === 'win32'
+	? new require('node-notifier/notifiers/balloon')() // For Windows
+	: require('node-notifier'); // For other OS
 
 require("scarletsframe-compiler")({
 	// Start the server with BrowserSync
