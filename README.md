@@ -4,6 +4,8 @@ Basic template for scarletsframe
 Let's begin with these steps
 
 ### Install dependency
+We will use [scarletsframe-compiler](https://github.com/StefansArya/scarletsframe-compiler), but it's still work in progress. You can use another custom build chain like using [Webpack](https://github.com/krausest/js-framework-benchmark/tree/master/frameworks/keyed/scarletsframe)/Rollup/Parcel.
+
 ```sh
 $ npm i
 
@@ -42,6 +44,9 @@ If you want to change the hot reload behaviour you can modify it from `/public/i
 
 ### Compiler settings
 You can modify some parameter on the `/gulpfile.js` if you want to have different configuration.
+
+### ScarletsFrame file extension
+Before you getting started with `.sf` file, please install the syntax highlighter from this [link](https://github.com/StefansArya/scarletsframe-compiler/syntax-highlighter). There are an example in the `/src/vw-myview/example.sf`.
 
 ## GitHub Pages
 There are a default template for deploying into `gh-pages` branch on `/.github/workflows/gh-pages.yml-template`. To use it you just need to rename it to `gh-pages.yml`. Then go to your project settings, scroll down, and configure your GitHub Pages.

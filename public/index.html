@@ -24,7 +24,8 @@
 			sf.hotReload(2);
 	</script>
 </head>
-<body style="visibility: hidden;">
+<body>
+	<div id="loading" class="example-css"></div>
 
 	<!-- Assets Loader (Optional) -->
 	<script type="text/javascript">
@@ -35,24 +36,31 @@
 
 		// https://www.npmjs.com/package/scarletsframe#asset-loader
 		sf.loader.css([
-			"/assets/mycss.min.css?1589520834406",
+			"/assets/mycss.min.css?1606787759912",
+			"/assets/sf.combined.css?1606628742924",
 			cf_cdn+'/animate.css/3.7.0/animate.min.css',
 			"https://fonts.googleapis.com/css?family=Nunito",
 		]);
 
 		sf.loader.js([
-			"/assets/myjs.min.js?1597641840762",
-			"/assets/myhtml.html.js?1594058273102",
+			"/assets/myjs.min.js?1606788332194",
+			"/assets/myhtml.html.js?1606787759937",
+			"/assets/sf.combined.js?1597641840762",
 		]);
+
+		sf.loader.onProgress(function(loaded, total){
+			$('#loading').text(`Loading: ${Math.round(loaded/total*100)}%`);
+		});
 
 		$(function(){
 			// Loader finish
 			console.log("Let's initialize your application");
-			document.body.style.visibility = '';
+			$('#loading').remove();
+			$('vw-myview').css('visibility', '');
 		});
 	</script>
 
 	<!-- Your Views -->
-	<vw-myview></vw-myview>
+	<vw-myview style="visibility: hidden;"></vw-myview>
 </body>
 </html>

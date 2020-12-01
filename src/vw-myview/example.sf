@@ -1,0 +1,120 @@
+Please install ScarletsFrame's SyntaxHighlighter to open this file extension
+https://github.com/StefansArya/scarletsframe-compiler/syntax-highlighter
+
+This first section/block can be used for comments
+
+You can use .frame extension to combine your .html, .css, .js
+All definition are optional, for example you can define css or js only
+
+Embedded documentation:
+```html
+<!-- Just append the element on DOM -->
+<body>
+	<ex-sample></ex-sample>
+</body>
+```
+
+```js
+// And then you can obtain it from the component list
+var lists = sf.component("ex-sample");
+lists[0].message = "changed";
+```
+
+## comment
+ Currently any Script in js-global will running on global scope
+ Currently any CSS in scss-global will not scoped
+
+ We're planning to make JS and SCSS scoped and adding support for
+ multiple compiler like LESS, TypeScript, etc
+
+ This HTML content will be saved on window.template['vw-myview/example.sf']
+ You can customize the prefix from the gulpfile.js
+
+ I will update this example on the future xD
+
+## html
+ <ex-sample style="color: {{ color }}">
+ 	<div class="left {{ message + '123' }}"></div>
+ 	<div class="right">{{ description + '123' }}</div>
+ 	<div class="right" @click="console.log(1+2)">{{@exec
+ 		if(true) color = 'yellow';
+ 		return "<u><b>Be careful, this is not escaped :3</b></u>";
+
+ 		// To escape it you must use enclosed template
+ 		// return {[ <b>{{ "<u>Safety here!</u>" }}</b> ]};
+ 	}}</div>
+ </ex-sample>
+
+
+## js-global
+ /* Because scoping haven't been supported
+ 	You may see "msg" as global variable xD
+
+	Make sure to declare your variable/function
+	inside of function(My, root){ ... }
+  */
+ var msg = "Hello";
+
+ sf.component("ex-sample", {
+ 	// Targeting to the HTML on this file, relative from /src/ folder
+ 	template: "vw-myview/example.sf"
+ }, function(My, include) {
+ 	var localVar = 1;
+ 	My.color = 'black';
+ 	My.message = msg;
+ 	My.description = "Developers! ";
+ });
+
+
+## scss-global
+ /* Because scoping haven't been supported
+	We need to begin with the component
+	element's tag name (ex-sample)
+ */
+ ex-sample {
+ 	position: fixed;
+ 	height: 50px;
+ 	width: 100px;
+ 	align-items: center;
+ 	color: black;
+ 	display: flex;
+ 	justify-content: center;
+ 	.left {
+ 		border-right: 2px solid;
+ 		font-size: 26px;
+ 	}
+ 	.right {
+ 		padding: 0 15px 0 15px;
+ 		text-align: center;
+ 	}
+ }
+
+
+## comment
+ This still being planned
+
+ Uncomment below "js-module" and comment above "js"
+ to use ES6 module instead
+
+ you can just remove the first extra space
+ to separate this comment block with js-module's block
+
+ ## js
+ import sf from "scarletsframe";
+
+ // Create your own space, so you can share it
+ // with other project and avoid name conflict
+ export let MySpace = new sf.space(true);
+
+ // Second parameter will be used for exporting to module data
+ // After using ">>" every script below that will belongs to a new scope
+ 1>> MySpace.component("example", My);
+
+ // The component list will automatically exported as default
+ // You can't use export keyword here, but you can export it
+
+ var localVar = 1;
+
+ // Export data to component
+ My.message = "Hello";
+ My.description = "Developers! ";

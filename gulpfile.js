@@ -6,6 +6,7 @@ process.stdout.write("Loading scarletsframe-compiler\r");
 // $ gulp compile-html  -> Compile HTML only
 // $ gulp compile-css   -> Compile CSS only
 // $ gulp compile-js    -> Compile JS only
+// $ gulp compile-sf    -> Compile SF only
 
 var translates = require('./translates.js');
 
@@ -16,7 +17,7 @@ var notifier = os.platform() === 'win32'
 
 require("scarletsframe-compiler")({
 	// Start the server with BrowserSync
-	browserSync:{
+	browserSync: {
 		// proxy:'http://myjs.sandbox',
 		port: process.env.PORT || 6789, // Accessible-> http://localhost:6789
 		ghostMode: false, // Use synchronization between browser?
@@ -42,6 +43,7 @@ require("scarletsframe-compiler")({
 		html: true,
 		js: true,
 		scss: true,
+		sf: true,
 		static: true, // A template written on PHP or others
 	},
 
@@ -64,6 +66,7 @@ require("scarletsframe-compiler")({
 			// ** Optional Feature: combined js files**
 			js:{
 				file:'public/assets/myjs.min.js',
+				// header:"/* MyProject \n MIT Licensed */",
 
 				// Will be processed from the top to bottom
 				combine:[
@@ -75,13 +78,23 @@ require("scarletsframe-compiler")({
 			scss:{
 				file:'public/assets/mycss.min.css',
 				combine:'src/**/*.scss',
+
+				// header:"/* MyProject \n MIT Licensed */",
 			},
 			html:{
 				file:'public/assets/myhtml.html.js',
 				combine:'src/**/*.html',
 
+				// header:"/* MyProject \n MIT Licensed */",
+				// prefix: 'MyHTML'
+
 				// Watch changes and apply changes directly without combine to one file
 				// static:['resources/plate/**/*.php', 'resources/views/**/*.php'],
+			},
+			sf:{
+				file:'public/assets/sf.combined', // Will have .js and .css
+				combine:'src/**/*.sf',
+				// prefix: 'MyHTML'
 			}
 		},
 	},
