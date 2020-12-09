@@ -10,7 +10,7 @@
     "@babel/plugin-proposal-class-properties": "^7.12.1",
     "@babel/preset-env": "^7.12.4",
     "node-notifier": "^8.0.0",
-    "scarletsframe-compiler": "0.3.8"
+    "scarletsframe-compiler": "0.3.9"
   },
   "-- include this devDeps if you want to compile .js as module": {
     "@rollup/plugin-commonjs": "*",
