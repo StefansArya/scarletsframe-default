@@ -6,6 +6,10 @@ This first section/block can be used for comments
 You can use .frame extension to combine your .html, .css, .js
 All definition are optional, for example you can define css or js only
 
+When using development mode, hot reload can be enabled
+and you can hover on your element with Ctrl + Alt + click
+to open frame inspector.
+
 Embedded documentation:
 ```html
 <!-- Just append the element on DOM -->
