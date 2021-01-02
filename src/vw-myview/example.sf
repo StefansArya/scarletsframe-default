@@ -42,7 +42,7 @@ lists[0].message = "changed";
  	<div class="right">{{ description + '123' }}</div>
  	<div class="right" @click="console.log(1+2)">{{@exec
  		if(true) color = 'yellow';
- 		return "<u><b>Be careful, this is not escaped :3</b></u>";
+ 		return "<u><b>Be careful, this is will be parsed as HTML</b></u>";
 
  		// To escape it you must use enclosed template
  		// return {[ <b>{{ "<u>Safety here!</u>" }}</b> ]};
@@ -60,8 +60,7 @@ lists[0].message = "changed";
  var msg = "Hello";
 
  sf.component("ex-sample", {
- 	// Targeting to the HTML on this file, relative from /src/ folder
- 	template: "vw-myview/example.sf"
+ 	template: #this.path // #this.path Refer to current file path, relative to /src folder
  }, function(My, include) {
  	var localVar = 1;
  	My.color = 'black';
