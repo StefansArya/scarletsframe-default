@@ -6,11 +6,11 @@
     "compile": "gulp compile"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.4",
+    "@babel/core": "^7.12.10",
     "@babel/plugin-proposal-class-properties": "^7.12.1",
-    "@babel/preset-env": "^7.12.4",
+    "@babel/preset-env": "^7.12.11",
     "node-notifier": "^9.0.0",
-    "scarletsframe-compiler": "0.3.12"
+    "scarletsframe-compiler": "0.3.13"
   },
   "-- include this devDeps if you want to compile .js as module": {
     "@rollup/plugin-commonjs": "*",
@@ -18,8 +18,5 @@
     "@rollup/stream": "*",
     "gulp-better-rollup": "^4.0.1",
     "rollup": "^2.26.3"
-  },
-  "browserslist": [
-    "> 1%"
-  ]
+  }
 }

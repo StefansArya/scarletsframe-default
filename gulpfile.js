@@ -36,6 +36,13 @@ require("scarletsframe-compiler")({
 	// And then set this to true with JavaScript
 	startupCompile: false,
 
+	// Choose your default editor
+	// You must register "subl" or "code" to the PATH environment variable.
+	// https://www.sublimetext.com/docs/command_line.html
+	//
+	// https://code.visualstudio.com/docs/editor/command-line#_code-is-not-recognized-as-an-internal-or-external-command
+	editor: 'sublime', // only 'sublime' or 'vsc' that currently supported
+
 	// Optional if you want to remove source map on production mode
 	includeSourceMap: process.env.production || true,
 	timestampSourceMap: false,
