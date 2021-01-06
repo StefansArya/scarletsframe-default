@@ -19,7 +19,7 @@ views.addRoute([
 	    },
 	}, {
 	    path:'/page2',
-	    template:'vw-myview/page2',
+	    template:'vw-myview/page2.html',
 
 	    // Run something before going to this route
 	    beforeRoute:function(data){

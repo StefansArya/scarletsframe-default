@@ -41,8 +41,8 @@ lists[0].message = "changed";
  	<div class="left {{ message + '123' }}"></div>
  	<div class="right">{{ description + '123' }}</div>
  	<div class="right" @click="console.log(1+2)">{{@exec
- 		if(true) color = 'yellow';
- 		return "<u><b>Be careful, this is will be parsed as HTML</b></u>";
+ 		if(true) color = 'black';
+ 		return "<u><b>Be careful, this part will be parsed as HTML</b></u>";
 
  		// To escape it you must use enclosed template
  		// return {[ <b>{{ "<u>Safety here!</u>" }}</b> ]};
@@ -63,7 +63,7 @@ lists[0].message = "changed";
  	template: #this.path // #this.path Refer to current file path, relative to /src folder
  }, function(My, include) {
  	var localVar = 1;
- 	My.color = 'black';
+ 	My.color = '#6a00ff'; // This will be overridden from #html exec
  	My.message = msg;
  	My.description = "Developers! ";
  });
@@ -77,9 +77,11 @@ lists[0].message = "changed";
  ex-sample {
  	position: fixed;
  	height: 50px;
- 	width: 100px;
+ 	width: 300px;
+ 	top: 100px;
+ 	left: 50px;
  	align-items: center;
- 	color: black;
+ 	color: #6a00ff;
  	display: flex;
  	justify-content: center;
  	.left {

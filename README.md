@@ -8,12 +8,6 @@ We will use [scarletsframe-compiler](https://github.com/StefansArya/scarletsfram
 
 ```sh
 $ npm i
-
-# Or use yarn
-$ yarn install
-
-# Or use pnpm
-$ pnpm i
 ```
 
 ## Starting the development server
