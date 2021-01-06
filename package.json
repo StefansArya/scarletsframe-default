@@ -6,6 +6,7 @@
     "compile": "gulp compile"
   },
   "devDependencies": {
+    "gulp": "^4.0.2",
     "@babel/core": "^7.12.10",
     "@babel/plugin-proposal-class-properties": "^7.12.1",
     "@babel/preset-env": "^7.12.11",
