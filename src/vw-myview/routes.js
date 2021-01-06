@@ -6,7 +6,7 @@ views.addRoute([
 
 	    // Relative to `/src` directory path
 	    // If you modify the `/src` structure you also need to modify `compilePath` from `gulpfile.js`
-	    template:'vw-myview/example',
+	    template:'vw-myview/example.html',
 
 	    // Event listener for current route
 	    on:{
