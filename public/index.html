@@ -5,10 +5,10 @@
 	<title>Home</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<script src="https://cdn.jsdelivr.net/npm/scarletsframe@0.33.1/dist/scarletsframe.hot.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/scarletsframe@0.34.8/dist/scarletsframe.dev.js"></script>
 
-	<!-- Use this on production, instead of scarletsframe.hot.js -->
-	<!-- <script src="https://cdn.jsdelivr.net/npm/scarletsframe@0.33.1/dist/scarletsframe.min.js"></script> -->
+	<!-- Use this on production, instead of scarletsframe.dev.js -->
+	<!-- <script src="https://cdn.jsdelivr.net/npm/scarletsframe@0.34.8/dist/scarletsframe.min.js"></script> -->
 
 	<script type="text/javascript">
 		// Polyfill for Safari and Firefox
@@ -32,19 +32,19 @@
 		var cf_cdn = 'https://cdnjs.cloudflare.com/ajax/libs';
 
 		// Register sf.dom to global
-		$ = sf.dom;
+		$ = sf.$;
 
 		// https://www.npmjs.com/package/scarletsframe#asset-loader
 		sf.loader.css([
-			"/assets/mycss.min.css?1606787759912",
+			"/assets/mycss.min.css?1612611209370",
 			"/assets/sf.combined.css?1606628742924",
 			cf_cdn+'/animate.css/3.7.0/animate.min.css',
 			"https://fonts.googleapis.com/css?family=Nunito",
 		]);
 
 		sf.loader.js([
-			"/assets/myjs.min.js?1606788332194",
-			"/assets/myhtml.html.js?1606787759937",
+			"/assets/myjs.min.js?1612612868894",
+			"/assets/myhtml.html.js?1612611209394",
 			"/assets/sf.combined.js?1597641840762",
 		]);
 

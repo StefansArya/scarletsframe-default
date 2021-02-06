@@ -1,5 +1,5 @@
 // https://www.npmjs.com/package/scarletsframe#router--views
-var views = new sf.views('vw-myview', 'myview');
+var views = new sf.Views('vw-myview', 'myview');
 views.addRoute([
 	{
 	    path:'/',
@@ -55,6 +55,6 @@ views.addRoute([
 // When any route error happen
 .on('error', console.error);
 
-sf.views.onCrossing = function(url, target){
+sf.Views.onCrossing = function(url, target){
 	console.log("What should we do with cross domain URL?", url, target);
 }

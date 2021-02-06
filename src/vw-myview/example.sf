@@ -109,7 +109,7 @@ lists[0].message = "changed";
 
  // Create your own space, so you can share it
  // with other project and avoid name conflict
- export let MySpace = new sf.space(true);
+ export let MySpace = new sf.Space(true);
 
  // Second parameter will be used for exporting to module data
  // After using ">>" every script below that will belongs to a new scope
