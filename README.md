@@ -37,7 +37,7 @@ Everytime you modify the project's source code inside `/src` folder the developm
 If you want to change the hot reload behaviour you can modify it from `/public/index.html`.
 
 ### Frame Inspector Tools
-To open this interface make sure you're using the framework in development mode and have called `sf.hotReload`. After you saw "Development Mode Enabled" on the left side of the browser's window you can press Ctrl + Alt + MouseMove and hover to any element, then click it to lock the inspector tools.
+To open this interface make sure you're using the framework in development mode and have called `sf.hotReload`. After you saw `Development Mode Enabled` on the left side of the browser's window you can press `Ctrl + Alt + MouseMove` and hover to any element, then click it to lock the inspector tools.
 
 ![chrome_8ja0xmlrPM](https://user-images.githubusercontent.com/11073373/107117810-6485fc00-68af-11eb-8634-9e07786fa13a.png)
 
