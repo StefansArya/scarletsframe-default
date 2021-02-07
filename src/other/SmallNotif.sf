@@ -16,7 +16,7 @@ SmallNotif.add('message', 'color', /* delay in ms*/);
 	</div>
 </sf-m>
 
-## js
+## js-global
 var SmallNotif = sf.model('small.notif', function(My){
   const $ = sf.$;
 
