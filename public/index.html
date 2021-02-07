@@ -17,7 +17,7 @@
 				z('https://code.jquery.com/pep/0.4.3/pep.js');
 		})();
 
-		// Only available on scarletsframe.hot.js (Only for development env)
+		// Only available on scarletsframe.dev.js (Only for development env)
 		// 1 = Will not replace model/component value (only replace function)
 		// 2 = Replace all
 		if(sf.hotReload !== void 0)
@@ -32,7 +32,7 @@
 		var cf_cdn = 'https://cdnjs.cloudflare.com/ajax/libs';
 
 		// Register sf.dom to global
-		$ = sf.$;
+		$ = sf.dom = sf.$;
 
 		// https://www.npmjs.com/package/scarletsframe#asset-loader
 		sf.loader.css([
