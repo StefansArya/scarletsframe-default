@@ -130,7 +130,7 @@ require("scarletsframe-compiler")({
 			// {save:'resources/lang', path:'app', flag:'php'}, // Flag this as PHP
 		],
 
-		// Put `var tr = sf.lang` somewhere on the script to avoid being uglified
+		// Put `var tr = sf.language.get` somewhere on the script to avoid being uglified
 		jsFunc:'tr',
 		phpFunc:'tr',
 
@@ -138,7 +138,7 @@ require("scarletsframe-compiler")({
 		saveDir:'public/assets/languages',
 		on:{
 			// Apply your own translator there
-			translate: function translates(text, target, callback){
+			translate(text, target, callback){
 				// Assume that our default language on every JS or HTML template is en_US
 				translates('en_US', target, text, callback);
 			}
