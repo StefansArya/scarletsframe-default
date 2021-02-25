@@ -1,5 +1,6 @@
 # ScarletsFrame's default template
-Basic template for scarletsframe
+Basic template for scarletsframe.
+If something is not working, feel free to create new issue.
 
 Let's begin with these steps
 
