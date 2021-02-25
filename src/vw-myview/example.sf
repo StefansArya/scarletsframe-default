@@ -45,7 +45,8 @@ I will update this example on the future xD
 		return "<u><b>Be careful, this part will be parsed as HTML</b></u>";
 
 		// To escape it you must use mustache template
-		// return {[ <b>{{ "<u>Safety here!</u>" }}</b> ]};
+		// No need to use "return"
+		// {[ <b>{{ "<u>Safety here!</u>" }}</b> ]};
 	}}</div>
 </ex-sample>
 

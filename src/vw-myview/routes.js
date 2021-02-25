@@ -10,10 +10,10 @@ views.addRoute([
 
 	    // Event listener for current route
 	    on:{
-	      coming:function(){
+	      coming(){
 	        console.log('henlo from / route');
 	      },
-	      leaving:function(){
+	      leaving(){
 	        console.log('leaving from / route');
 	      },
 	    },
@@ -22,7 +22,7 @@ views.addRoute([
 	    template:'vw-myview/page2.html',
 
 	    // Run something before going to this route
-	    beforeRoute:function(data){
+	    beforeRoute(data){
 	      console.log("Before route data:", data);
 	    },
 	},

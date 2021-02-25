@@ -45,7 +45,6 @@ require("scarletsframe-compiler")({
 
 	// Optional if you want to remove source map on production mode
 	includeSourceMap: process.env.production || true,
-	timestampSourceMap: false,
 	hotReload:{
 		html: true,
 		js: true,
