@@ -1,7 +1,8 @@
 ## html
 <sf-m name="example" class="example-css">
 	<div class="left">{{ message }}</div>
-	<div class="right" @click="toPage2">{{ description }}</div>
+	<a class="right" href="#myview/page2">{{ description }}</a>
+	<!-- <div class="right" @click="toPage2">{{ description }}</div> -->
 </sf-m>
 
 ## js-global.router
@@ -75,5 +76,10 @@ sf.model("example", function (My, require) {
 		padding: 10px;
 		white-space: pre-wrap;
 		cursor: pointer;
+	}
+
+	a{
+		color: inherit;
+		text-decoration: none;
 	}
 }

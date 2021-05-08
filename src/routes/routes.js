@@ -2,16 +2,16 @@
 
 // Current template is designed for file route
 // You can easily add route by adding new file in +vw-myview folder
-var views = new sf.Views('vw-myview', 'myview');
+var views = new sf.Views('vw-myview', 'myview')
 
 // You can also add route with JavaScript
-/*views.addRoute([{
+/*.addRoute([{
     path:'/',
 
     // Relative to `/src` directory path
     // If you modify the `/src` structure you also need to modify `compilePath` from `gulpfile.js`
     template:'vw-myview/example.html',
-}]);*/
+}])*/
 
 // Will be called before navigating
 .on('start', function(current, target) {
@@ -49,12 +49,12 @@ sf.Views.onCrossing = function(url, target){
 
 var transitioning = 0;
 function animatePageTransition(views){
-	if(views.lastSibling !== void 0)
+	if(views.lastSibling)
 		$(views.lastSibling).animateKey('scaleDown', 0.6, function(){
 			$(this).addClass('disable-anim');
 		});
 
-	if(views.showedSibling !== void 0)
+	if(views.showedSibling)
 		$(views.showedSibling).removeClass('disable-anim').animateKey('scaleUpDown', {
 			duration:0.6,
 			delay:0.3,
