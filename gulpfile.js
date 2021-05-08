@@ -147,4 +147,9 @@ require("scarletsframe-compiler")({
 		similarity:0.6,
 		retranslate:true
 	},
+
+	// ** Experimental **
+	// Browser executable path, you don't need to use full path
+	// If the browser can be called from your CLI environment
+	// browserExec: "%AppData%/../Local/Chromium/Application/chrome.exe",
 }, require('gulp'));

@@ -6,10 +6,10 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<!-- <script src="/bundle/scarletsframe.dev.js"></script> -->
-	<script src="https://cdn.jsdelivr.net/npm/scarletsframe@0.34.9/dist/scarletsframe.dev.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/scarletsframe@0.34.10/dist/scarletsframe.dev.js"></script>
 
 	<!-- Use this on production, instead of scarletsframe.dev.js -->
-	<!-- <script src="https://cdn.jsdelivr.net/npm/scarletsframe@0.34.9/dist/scarletsframe.min.js"></script> -->
+	<!-- <script src="https://cdn.jsdelivr.net/npm/scarletsframe@0.34.10/dist/scarletsframe.min.js"></script> -->
 
 	<script type="text/javascript">
 		// Polyfill for Safari and Firefox
@@ -26,24 +26,40 @@
 	</script>
 </head>
 <body>
-	<div id="loading" class="example-css"></div>
+	<div id="loading" class="example-css sf-loading-all"></div>
+	<style type="text/css" id="sf-css-hide-body">
+		body > * {
+			display: none;
+		}
+		.sf-loading-all{
+			display: block !important;
+		}
+	</style>
 
 	<!-- Assets Loader (Optional) -->
 	<script type="text/javascript">
-		var cf_cdn = 'https://cdnjs.cloudflare.com/ajax/libs';
-
 		// Register sf.dom to global
 		$ = sf.dom = sf.$;
 
+		console.log("Loading required resource...");
+		var cf_cdn = 'https://cdnjs.cloudflare.com/ajax/libs';
+
 		// https://www.npmjs.com/package/scarletsframe#asset-loader
 		sf.loader.css([
-			"/assets/mycss.min.css?1612611209370",
-			"/assets/sf.combined.css?1606628742924",
+			// Load external styles
 			cf_cdn+'/animate.css/3.7.0/animate.min.css',
 			"https://fonts.googleapis.com/css?family=Nunito",
+
+			// Load our compiled styles
+			"/assets/mycss.min.css?1612611209370",
+			"/assets/sf.combined.css?1606628742924",
 		]);
 
 		sf.loader.js([
+			// Load external script
+			// ...
+
+			// Load our compiled scripts
 			"/assets/myjs.min.js?1613650401812",
 			"/assets/myhtml.html.js?1613014152313",
 			"/assets/sf.combined.js?1597641840762",
@@ -55,13 +71,10 @@
 
 		$(function(){
 			// Loader finish
-			console.log("Let's initialize your application");
+			console.log("Required resource was loaded!");
 			$('#loading').remove();
-			$('vw-myview').css('visibility', '');
+			$('#sf-css-hide-body').remove();
 		});
 	</script>
-
-	<!-- Your Views -->
-	<vw-myview style="visibility: hidden;"></vw-myview>
 </body>
 </html>

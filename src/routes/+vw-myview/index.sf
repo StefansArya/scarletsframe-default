@@ -1,3 +1,22 @@
+## html
+<sf-m name="example" class="example-css">
+	<div class="left">{{ message }}</div>
+	<div class="right" @click="toPage2">{{ description }}</div>
+</sf-m>
+
+## js-global.router
+={ // Must be started with "= {" and end with "}"
+    on:{
+      coming(){
+        console.log('henlo from / route');
+      },
+      leaving(){
+        console.log('leaving from / route');
+      },
+    }
+}
+
+## js-global
 // https://www.npmjs.com/package/scarletsframe#initializedefine-model
 // To change the hot reload behaviour, go to public/index.html
 sf.model("example", function (My, require) {
@@ -34,3 +53,27 @@ sf.model("example", function (My, require) {
 		descAnimation();
 	}
 });
+
+## scss-global
+.example-css{
+	position: relative;
+	height: 100vh;
+	align-items: center;
+	display: flex;
+	justify-content: center;
+
+	.left {
+		border-right: 2px solid;
+		font-size: 26px;
+		padding: 0 15px 0 15px;
+		text-align: center;
+	}
+
+	.right {
+		font-size: 18px;
+		text-align: center;
+		padding: 10px;
+		white-space: pre-wrap;
+		cursor: pointer;
+	}
+}

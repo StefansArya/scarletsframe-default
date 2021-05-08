@@ -1,0 +1,20 @@
+## html.append-to-body
+<!-- Your Views, this will be appended to document body -->
+<vw-myview style="visibility: hidden;"></vw-myview>
+
+<!-- If you want to load external .js library or .css -->
+<!-- Please put the CDN link on /public/index.html -->
+
+
+## scss-global
+// Warning!
+// Current page style is designed without scrollbar
+// Please also remove overflow: hidden on body.scss
+// If you want to have page scrollbar
+
+vw-myview{
+	overflow: hidden;
+	display: block;
+	height: 100vh;
+	width: 100vw;
+}

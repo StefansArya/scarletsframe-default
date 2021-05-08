@@ -1,3 +1,4 @@
+## html
 <div class="example-css">
 	<div class="left">Page 2</div>
 
@@ -5,3 +6,10 @@
 	<!-- Use @click instead and define the callback on your model -->
 	<div class="right" onclick="sf.Views.list.myview.goto('/')">Let's play with routes!</div>
 </div>
+
+## js-global.router
+={ // Run something before going to this route
+    beforeRoute(data){
+      console.log("Before route data:", data);
+    }
+}
