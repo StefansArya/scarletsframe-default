@@ -5,8 +5,6 @@ node_modules/
 *.min.js
 *.map
 sf.combined.*
-/package-lock.json
-/pnpm-lock.yaml
 /.phpintel/
 *.lock
 *.html.js
