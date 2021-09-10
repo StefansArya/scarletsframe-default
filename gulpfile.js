@@ -1,12 +1,12 @@
 process.stdout.write("Loading scarletsframe-compiler\r");
 
 // Run this from CLI
-// $ gulp               -> Watch files
-// $ gulp compile       -> Compile JS/CSS/HTML
-// $ gulp compile-html  -> Compile HTML only
-// $ gulp compile-css   -> Compile CSS only
-// $ gulp compile-js    -> Compile JS only
-// $ gulp compile-sf    -> Compile SF only
+// $ npx gulp               -> Watch files
+// $ npx gulp compile       -> Compile JS/CSS/HTML
+// $ npx gulp compile-html  -> Compile HTML only
+// $ npx gulp compile-css   -> Compile CSS only
+// $ npx gulp compile-js    -> Compile JS only
+// $ npx gulp compile-sf    -> Compile SF only
 
 var translates = require('./translates.js');
 
