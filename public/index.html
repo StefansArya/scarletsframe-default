@@ -6,10 +6,10 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<!-- <script src="/bundle/scarletsframe.dev.js"></script> -->
-	<script src="https://cdn.jsdelivr.net/npm/scarletsframe@0.34.10/dist/scarletsframe.dev.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/scarletsframe@0.34.17/dist/scarletsframe.dev.js"></script>
 
 	<!-- Use this on production, instead of scarletsframe.dev.js -->
-	<!-- <script src="https://cdn.jsdelivr.net/npm/scarletsframe@0.34.10/dist/scarletsframe.min.js"></script> -->
+	<!-- <script src="https://cdn.jsdelivr.net/npm/scarletsframe@0.34.17/dist/scarletsframe.min.js"></script> -->
 
 	<script type="text/javascript">
 		// Polyfill for Safari and Firefox
@@ -66,7 +66,7 @@
 		]);
 
 		sf.loader.onProgress(function(loaded, total){
-			$('#loading').text(`Loading: ${Math.round(loaded/total*100)}%`);
+			$('#loading').text(`Loading: ${Math.round(loaded/total*160)}%`);
 		});
 
 		$(function(){
