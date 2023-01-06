@@ -46,7 +46,7 @@ To open this interface make sure you're using the framework in development mode 
 You can modify some parameter on the `/gulpfile.js` if you want to have different configuration.
 
 ### ScarletsFrame file extension
-Before you getting started with `.sf` file, please install the syntax highlighter from this [link](https://github.com/StefansArya/scarletsframe-compiler/syntax-highlighter). There are an example in the `/src/vw-myview/example.sf`.
+Before you getting started with `.sf` file, please install the syntax highlighter from this [link](https://github.com/StefansArya/scarletsframe-compiler/tree/master/syntax-highlighter/vscode). There are an example in the `/src/vw-myview/example.sf`.
 
 ## GitHub Pages
 There are a default template for deploying into `gh-pages` branch on `/.github/workflows/gh-pages.yml-template`. To use it you just need to rename it to `gh-pages.yml`. Then go to your project settings, scroll down, and configure your GitHub Pages.
