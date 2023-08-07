@@ -7,7 +7,7 @@
   },
   "devDependencies": {
     "gulp": "^4.0.2",
-    "@babel/core": "^7.14.6",
+    "@babel/core": "^7.22.10",
     "@babel/plugin-proposal-class-properties": "^7.14.5",
     "@babel/parser": "^7.14.7",
     "@babel/preset-env": "^7.22.5",
