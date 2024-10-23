@@ -1,0 +1,102 @@
+## html.append-to-body
+<!-- /src/model/modal.sf -->
+<sf-m name="modal" class="modal {{ showed && 'show' }}">
+  <div class="modal-box">
+    <vw-modal></vw-modal>
+  </div>
+</sf-m>
+
+## scss-global
+sf-m.modal{
+	grid-template-columns: auto minmax(0, 1fr) auto;
+	display: none;
+	position: fixed;
+	z-index: 1001;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	box-sizing: border-box;
+	grid-template-areas:
+	    "top-start top top-end"
+	    "center-start center center-end"
+	    "bottom-start bottom-center bottom-end"
+	    "gap gap gap";
+	grid-template-rows: auto auto auto .625em;
+	height: 100%;
+	padding: .625em .625em 0;
+	overflow-x: hidden;
+	background: #00000000;
+	transition: background 0.3 linear;
+
+	vw-modal sf-page-view{
+		overflow: visible;
+	}
+
+	&.show{
+		display: grid;
+		background: #00000060;
+		.modal-box{
+			opacity: 1;
+		}
+	}
+
+	.modal-box{
+		display: grid;
+		transition: opacity;
+		opacity: 0;
+		grid-column: 2;
+		grid-row: 2;
+		align-self: center;
+		justify-self: center;
+		position: relative;
+		box-sizing: border-box;
+		max-width: 100%;
+	}
+}
+
+## js-global
+var Modal = sf.model('modal', function(My){
+	My.showed = false;
+
+	My.init = function(){
+		My.hotReloaded();
+
+		$(window).on('keyup', function(ev){
+			if(ev.key === "Escape"){
+				if(My.showed) My.hide();
+			}
+		});
+	}
+	My.hotReloaded = function(){
+		My.views = sf.Views.listSelector['vw-modal'];
+	}
+
+	let onHide = {};
+	My.onHide = function(path, callback){
+		let list = onHide[path] ??= [];
+		list.push(callback);
+	}
+
+	My._triggerHide = function(){
+		let list = onHide[My.views.currentPath];
+		list?.forEach(v => v());
+	}
+
+	My.hide = function(){
+		My.showed = false;
+		My.$el('.modal-box').off('pointerdown', My.hide, {outside: true});
+		My._triggerHide();
+	}
+
+	My.goto = function(path){
+		My._triggerHide();
+
+		My.views.goto(path);
+		My.showed = true;
+
+		setTimeout(()=> {
+			My.$el('.modal-box').on('pointerdown', My.hide, {outside: true});
+		}, 400);
+	}
+});

@@ -1,0 +1,22 @@
+## html
+<sf-m name="privacy-policy">
+    <div>Umum</div>
+    <p>
+        1. Dengan menggunakan layanan Akemizu, anda setuju untuk memberitahu kami beberapa data seperti: UID game, ID server, nomor HP atau email
+        2. Transaksi akan dicatat di database dan dapat dilihat dalam bentuk invoice, jika sistem tidak menganggap anda sebagai pemilik invoice maka invoice hanya memperlihatkan tanggal, produk, dan jumlah transaksi saja. Informasi detail seperti UID, nama dan nomor HP tidak diperlihatkan secara full.
+        3. Dengan melakukan pembayaran, anda menyetujui bahwa transaksi dan bbrp informasi seperti UID/server akan diproses oleh sistem ke pihak ketiga (vendor game).
+        4. Dengan mendaftarkan akun ke layanan Akemizu, anda setuju untuk menyimpan data yang anda berikan di database untuk pencatatan.
+        5. Password anda akan di hash oleh sistem menggunakan bcrypt. Sehingga password tidak dapat dilihat lagi dan hanya bisa direset/ganti jika lupa password.
+        6. Kami juga menggunakan Google Analytics.
+    </p>
+</sf-m>
+
+## scss-global
+sf-m[name="privacy-policy"] {
+    background: black;
+}
+
+## js-global
+sf.model("privacy-policy", My => {
+    My.init = function(){}
+});

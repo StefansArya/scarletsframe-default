@@ -1,0 +1,181 @@
+## html
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+	<a class="navbar-brand" href="/">
+		<!--div class="circle-cover">
+			<div class="circle">
+				<img src="/assets/img/favicon.png" alt="" class="d-inline-block align-text-top">
+			</div>
+		</div-->
+		<div class="title">Akemizu's Store</div>
+		<div class="description">Tempat untuk topup game, beli voucher, dan joki. </div>
+	</a>
+
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Layanan
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#page/store"><i class="fa-solid fa-cart-shopping"></i> Toko / Store</a></li>
+            <li><a class="dropdown-item disabled" href="#page/pilot"><i class="fa-solid fa-file-signature"></i> Joki / Pilot</a></li>
+            <li title="Fitur akan ditambahkan jika penjualan toko lancar"><a class="dropdown-item disabled" href="#page/calculator"><i class="fa-solid fa-square-root-variable"></i> Calculator Game</a></li>
+          </ul>
+        </li>
+        <li class="nav-item" style="margin: 0 40px;">
+          <a class="nav-link pencarian" href="#"><i class="fa-solid fa-magnifying-glass"></i> Pencarian</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Information
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#page/about/terms-of-service"><i class="fa-solid fa-file-contract"></i> Terms of Services</a></li>
+            <li><a class="dropdown-item" href="#page/about/privacy-policy"><i class="fa-solid fa-shield-halved"></i> Privacy Policy</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#page/about/contact-us"><i class="fa-solid fa-headset"></i> Contact Us</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+	<button class="btn btn-primary left-side-menu-button" type="button" data-bs-toggle="offcanvas" data-bs-target="#leftSideMenu" aria-controls="leftSideMenu">
+		<i class="fa-solid fa-bars"></i>
+	</button>
+	<div class="account">
+		<div class="user-info">
+			<div class="name">User name here</div>
+			<div class="rank">Member</div>
+
+			<ul class="dropdown-menu">
+				<li><a class="dropdown-item" href="#">Logout</a></li>
+			</ul>
+		</div>
+
+		<div class="circle-cover" data-bs-toggle="dropdown" aria-expanded="false">
+			<div class="circle">
+				<img src="https://github.com/stefansarya.png" alt="" class="d-inline-block align-text-top">
+			</div>
+		</div>
+	</div>
+  </div>
+</nav>
+
+## scss-global
+@media(min-width: 992px) {
+	.left-side-menu-button {
+		display: none;
+	}
+}
+.left-side-menu-button {
+  	background-color: #3858b1 !important;
+}
+nav{
+	z-index: 10;
+	box-shadow: 0 0 10px black;
+	li a.pencarian {
+		color: gray !important;
+		background: #000000b8;
+		border-radius: 100px;
+		padding: 8px 20px !important;
+	}
+}
+.navbar{
+	background-color: #00304d !important;
+	.navbar-nav {
+		margin: 0 auto;
+		.nav-link {
+			color: white;
+			&.disabled {
+				color: gray;
+			}
+			
+		}
+	}
+	.circle-cover {
+		background: #2b3035;
+		height: 90px;
+		width: 90px;
+		border-radius: 100%;
+		position: absolute;
+		top: 0;
+		left: 0;
+		cursor: pointer;
+	}
+	.circle{
+		height: 80px;
+		width: 80px;
+		overflow: hidden;
+		border-radius: 100%;
+		position: absolute;
+		top: 5px;
+		left: 4px;
+		background: #00000073;
+		box-shadow: 0 0 14px black;
+		img {
+			height: 90px;
+			position: absolute;
+		}
+	}
+}
+
+li i {
+	width: 25px;
+}
+
+.account{
+	width: 200px;
+	@media(max-width: 600px) {
+		& {
+			display: none;
+		}
+	}
+
+	.circle-cover {
+		left: unset;
+		right: 10px;
+	}
+	.circle{
+		left: unset;
+		right: 5px;
+		img {
+			height: 80px;
+			position: absolute;
+		}
+	}
+	.user-info{
+		position: absolute;
+		top: 16px;
+		right: 108px;
+		color: white;
+		text-align: right;
+		.name {
+			font-weight: bold;
+			letter-spacing: 1px;
+			width: 150px;
+			overflow: hidden;
+			text-wrap: nowrap;
+			text-overflow: ellipsis;
+		}
+		.rank {
+			color: grey;
+			font-size: 13px;
+		}
+	}
+}
+
+.navbar-brand {
+	width: 200px;
+	.title {
+		font-weight: bold;
+		letter-spacing: 4px;
+		text-shadow: 0 0 6px #d57c0f;
+	    color: #e7b67a;
+	}
+	.description{
+		font-size: 13px;
+		color: gray;
+    	margin-top: -5px;
+	}
+}

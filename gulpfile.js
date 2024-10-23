@@ -34,7 +34,7 @@ require("scarletsframe-compiler")({
 	// Recompile some files before being watched on startup
 	// You may want to check if the git history was changed
 	// And then set this to true with JavaScript
-	startupCompile: false,
+	startupCompile: true,
 
 	// Choose your default editor
 	// You must register "subl" or "code" to the PATH environment variable.

@@ -1,0 +1,85 @@
+## html.append-to-body
+<sf-m name="left-sidebar">
+	<div class="offcanvas offcanvas-start" id="leftSideMenu" style="width: 280px;">
+		<div class="d-flex flex-column flex-shrink-0 p-3" style="height: 100%;">
+			<a href="/" class="d-flex align-items-center pb-3 mb-3 text-decoration-none border-bottom">
+				<i class="fa-solid fa-signature"></i>
+				<span class="fs-5 fw-semibold title">Akemizu Store</span>
+			</a>
+			<ul class="nav nav-pills flex-column mb-auto">
+				<li><a href="#" class="nav-link">
+					<i class="fa-solid fa-magnifying-glass"></i> Pencarian
+				</a></li>
+				<li class="nav-item"><a href="#page/store" class="nav-link active">
+					<i class="fa-solid fa-cart-shopping"></i> Toko / Store
+				</a></li>
+				<li class="nav-item"><a href="#page/pilot" class="nav-link disabled">
+					<i class="fa-solid fa-file-signature"></i> Joki / Pilot
+				</a></li>
+				<li class="nav-item"><hr></li>
+				<li class="nav-item"><a href="#page/calculator" class="nav-link disabled">
+					<i class="fa-solid fa-square-root-variable"></i> Calculator Game
+				</a></li>
+				<li class="nav-item"><a href="#page/invoice" class="nav-link">
+					<i class="fa-solid fa-file-invoice-dollar"></i> Cek Invoice
+				</a></li>
+				<li class="nav-item"><a href="#page/about/contact-us" class="nav-link">
+					<i class="fa-solid fa-headset"></i> Contact Us
+				</a></li>
+			</ul>
+			<hr>
+			<div class="dropdown">
+				<a href="#" class="d-flex align-items-center text-decoration-none dropdown-toggle" id="userButton" data-bs-toggle="dropdown" aria-expanded="false">
+					<img src="https://github.com/stefansarya.png" alt="" width="32" height="32" class="rounded-circle me-2">
+					<strong>Name here</strong>
+				</a>
+				<ul class="dropdown-menu text-small shadow" aria-labelledby="userButton">
+					<li><a class="dropdown-item" href="#">Settings</a></li>
+					<li><hr class="dropdown-divider"></li>
+					<li><a class="dropdown-item" href="#">Log out</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</sf-m>
+
+## scss-global
+sf-m[name="left-sidebar"] {
+	a {
+		color: white;
+		&:hover {
+			color: white;
+			text-shadow: 0 0 10px white;
+		}
+		&.dropdown-item {
+			color: black;
+			&:hover {
+				color: black;
+				text-shadow: 0 0 1px black;
+			}
+		}
+	}
+	.offcanvas {
+		background-color: #1e1e1e;
+	}
+	.title{
+		padding-left: 10px;
+	}
+	.nav li {
+		i {
+			width: 25px;
+		}
+	}
+	.nav-link.disabled{
+		color: gray;
+	}
+	li hr {
+		border-color: white;
+	}
+}
+
+## js-global
+sf.model("left-sidebar", My => {
+	My.init = function(){
+	}
+});

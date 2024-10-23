@@ -1,0 +1,57 @@
+## html
+<sf-m name="example" class="example-css">
+	<div class="title"><i class="fa fa-solid fa-house-chimney"></i> Akemizu Store</div>
+	<div class="right">Website tempat kamu bisa topup game online akan segera tersedia disini.</div>
+	<div class="right">Tunggu kehadiran kami ya teman-teman!</div>
+
+	<div class="bottom-left"><i class="fa fa-brands fa-discord"></i> Discord (sedang dikerjakan)</div>
+	<div class="bottom-center">Akemizu Store - 2024</div>
+</sf-m>
+
+## js-global
+// https://www.npmjs.com/package/scarletsframe#initializedefine-model
+// To change the hot reload behaviour, go to public/index.html
+sf.model("example", My => {
+	My.message = "Hello";
+});
+
+## scss-global
+.example-css{
+	position: relative;
+	height: 100vh;
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+
+	.bottom-left{
+		position: absolute;
+		bottom: 45px;
+		cursor: pointer;
+		color: gray;
+		text-decoration: line-through;
+		&:hover {
+			text-shadow: 0 0 20px white;
+		}
+
+		@media(min-width: 768px) {
+			left: 15px;
+		}
+	}
+
+	.bottom-center{
+		position: absolute;
+		bottom: 20px;
+	}
+
+	.title {
+		font-size: 30px;
+		padding-bottom: 20px;
+	}
+
+	.right {
+		font-size: 18px;
+		text-align: center;
+		white-space: pre-wrap;
+	}
+}

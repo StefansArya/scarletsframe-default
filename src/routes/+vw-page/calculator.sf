@@ -1,0 +1,24 @@
+## html
+<sf-m name="service-calculator">
+	<div class="title"><i class="fa fa-solid fa-house-chimney"></i> Calculator</div>
+	<div class="right">Hubungi kami</div>
+
+	<div class="bottom-left"><a href="https://discord.gg/VypJBpxDzf"><i class="fa fa-brands fa-discord"></i> Discord</a></div>
+</sf-m>
+
+## js-global
+sf.model("service-calculator", My => {
+	My.message = "Hello";
+
+	My.init = function(){
+		if(location.origin !== 'http://localhost:6789')
+			views.goto('/maintenance');
+	}
+});
+
+## scss-global
+sf-m[name="service-calculator"] {
+	position: relative;
+	// height: 100vh;
+	align-items: center;
+}

@@ -1,0 +1,106 @@
+## html
+<sf-m name="order-confirmation">
+	<div class="header">
+		<div class="icon">
+			<i class="fa-solid fa-{{ orderValid ? 'list-check' : 'xmark' }}"></i>
+		</div>
+		<div class="title">{{ orderTitleNote ? 'Apakah data dibawah ini sudah benar?' : 'Server gagal memvalidasi orderanmu' }}</div>
+		<div class="description">{{ orderDescriptionNote }}</div>
+	</div>
+	<div class="body">
+		<div class="data-table">
+			<div sf-each="x in orderData" class="row">
+				<div class="col-4">{{ x.name }}</div>
+				<div class="col-8">: {{ x.value }}</div>
+			</div>
+		</div>
+
+		<div class="buttons row gx-2">
+			<div class="col-md-8" @click="startOrder()">
+				<div class="start-order-btn p-2">Lanjutkan ke pembayaran!</div>
+			</div>
+			<div class="col-md-4" @click="cancelOrder()">
+				<div class="cancel-order-btn p-2">Batalkan</div>
+			</div>
+		</div>
+	</div>
+</sf-m>
+
+## scss-global
+sf-m[name="order-confirmation"] {
+	background: #485d91;
+	color: white;
+	padding: 20px;
+	border-radius: 10px;
+	max-width: 700px;
+	border: 2px solid #365c95;
+	position: relative;
+	box-shadow: 0 0 12px 0px #415d74;
+	.header {
+		.icon {
+			font-size: 24px;
+			text-align: center;
+			margin-bottom: 5px;
+		}
+		.title {
+			text-align: center;
+			font-size: 18px;
+			// font-weight: bold;
+		}
+		.description {
+			text-align: center;
+			font-size: 14px;
+		}
+	}
+	.body {
+		.data-table{
+			font-size: 14px;
+			border-radius: 10px;
+			padding: 15px;
+			background: #00000059;
+			margin: 10px 0;
+		}
+		.buttons {
+			.start-order-btn, .cancel-order-btn {
+				font-size: 14px;
+				border-radius: 10px;
+				color: white;
+				text-align: center;
+				cursor: pointer;
+			}
+			.start-order-btn {
+				background: #2a9f2aeb;
+				&:hover {
+					background: #2fc12feb;
+					box-shadow: 0 0 9px white;
+				}
+			}
+			.cancel-order-btn {
+				background: #000000a8;
+				&:hover {
+					background: black;
+					box-shadow: 0 0 9px white;
+				}
+			}
+		}
+	}
+}
+
+## js-global
+sf.model('order-confirmation', function(My){
+	My.orderValid = false;
+	My.orderTitleNote = '';
+	My.orderDescriptionNote = '';
+	My.orderData = [
+		{ name: "Username", value: "Stefans" },
+		{ name: "Server", value: "Asia" },
+	];
+
+	My.open = function(){
+		My.orderValid = false;
+		My.orderTitleNote = '';
+		My.orderDescriptionNote = '';
+	}
+
+	
+});

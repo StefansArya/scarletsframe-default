@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>Home</title>
+	<title>Akemizu Store</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<!-- <script src="/bundle/scarletsframe.dev.js"></script> -->
@@ -22,7 +22,7 @@
 		// 1 = Will not replace model/component value (only replace function)
 		// 2 = Replace all
 		if(sf.hotReload !== void 0)
-			sf.hotReload(2);
+			sf.hotReload(1);
 	</script>
 </head>
 <body>
@@ -49,20 +49,32 @@
 			// Load external styles
 			cf_cdn+'/animate.css/3.7.0/animate.min.css',
 			"https://fonts.googleapis.com/css?family=Nunito",
+			"https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.6.0/css/all.min.css",
+			'https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css',
+			"https://fonts.googleapis.com/css?family=Nunito",
+			"https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css",
+			"https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css",
+			'https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css',
+			'https://cdn.jsdelivr.net/npm/@dashboardcode/bsmultiselect@1.1.18/dist/css/BsMultiSelect.min.css',
+			'https://cdn.jsdelivr.net/npm/bulma-calendar@6.1.19/dist/css/bulma-calendar.min.css',
 
 			// Load our compiled styles
-			"/assets/mycss.min.css?1612611209370",
-			"/assets/sf.combined.css?1606628742924",
+			"/assets/mycss.min.css?1729622709024",
+			"/assets/sf.combined.css?1729704317158",
 		]);
 
 		sf.loader.js([
 			// Load external script
-			// ...
+			"https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js",
+			"https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js",
+			"https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js",
+			"https://cdn.jsdelivr.net/npm/@dashboardcode/bsmultiselect@1.1.18/dist/js/BsMultiSelect.min.js",
+			"https://cdn.jsdelivr.net/npm/bulma-calendar@6.1.19/dist/js/bulma-calendar.min.js",
 
 			// Load our compiled scripts
-			"/assets/myjs.min.js?1613650401812",
-			"/assets/myhtml.html.js?1613014152313",
-			"/assets/sf.combined.js?1597641840762",
+			"/assets/myjs.min.js?1729622365611",
+			"/assets/myhtml.html.js?1729313712402",
+			"/assets/sf.combined.js?1729663017291",
 		]);
 
 		sf.loader.onProgress(function(loaded, total){

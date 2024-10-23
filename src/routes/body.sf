@@ -1,6 +1,12 @@
 ## html.append-to-body
+<div class="background">
+	<img src="/assets/images/anime-galaxy-ai-generated.jpg">
+</div>
+
 <!-- Your Views, this will be appended to document body -->
-<vw-myview style="visibility: hidden;"></vw-myview>
+<sf-template path="component/header.sf"></sf-template>
+<vw-page style="visibility: hidden;"></vw-page>
+<sf-template path="component/footer.sf"></sf-template>
 
 <!-- If you want to load external .js library or .css -->
 <!-- Please put the CDN link on /public/index.html -->
@@ -12,9 +18,31 @@
 // Please also remove overflow: hidden on body.scss
 // If you want to have page scrollbar
 
-vw-myview{
-	overflow: hidden;
+body {
+ background: black;
+
+ a{
+	text-decoration: none;
+	color: inherit;
+ }
+}
+.background {
+	position: fixed;
+	filter: blur(30px);
+	pointer-events: none;
+	img {
+		left: -100px;
+		position: absolute;
+		top: -100px;
+		height: calc(100vh + 200px);
+		width: calc(100vw + 200px);
+		filter: brightness(0.2);
+	}
+}
+
+vw-page{
+	color: white;
 	display: block;
-	height: 100vh;
+	min-height: calc(100vh - 150px);
 	width: 100vw;
 }

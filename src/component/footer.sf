@@ -1,0 +1,48 @@
+## html
+<div class="footer">
+	<div class="row">
+		<div class="col-md-4 left">
+			Gabung ke Akemizu Cafe yuk: <b><a href="https://discord.gg/VypJBpxDzf"><i class="fa fa-brands fa-discord"></i> Discord</a></b>
+		</div>
+		<div class="col-md-4 center">
+			<!--div>Web layout design by <b>Stefans</b></div-->
+			<div class="studio">Akemizu Store • 2024</div>
+		</div>
+		<div class="col-md-4 right">
+			<a href="#page/about/privacy-policy">Privacy Policy</a>
+			<a href="#page/about/terms-of-service">Terms of Service</a>
+		</div>
+	</div>
+</div>
+
+## scss-global
+.footer {
+	position: relative;
+	background: #141414;
+    padding: 15px;
+    border-top: 1px solid #2f2f2f;
+    box-shadow: 0px 0px 15px 0px black;
+	.center, .left, .right {
+		text-align: center;
+		padding-bottom: 20px;
+		b {
+			font-weight: bold;
+		}
+	}
+	.left, .right {
+		b, a {
+			color: white;
+			display: block;
+			text-align: center;
+			cursor: pointer;
+
+			img {
+				width: 24px;
+			}
+
+			&:hover {
+				text-shadow: 0 0 10px white;
+			}
+		}
+	}
+}

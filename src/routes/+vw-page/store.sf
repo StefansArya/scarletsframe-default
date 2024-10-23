@@ -1,0 +1,110 @@
+## html
+<sf-m name="service-store">
+	<div class="container">
+		<div class="row">
+			<div class="title"><i class="fa-solid fa-fire"></i> Populer di toko ini</div>
+			<div class="description">Produk yang paling populer saat ini..</div>
+			<div class="product-list row row-cols-1 row-cols-md-3 g-4">
+				<div class="col" sf-each="x in list"><a href="#page/store/{{ x.urlName }}" class="card">
+					<div class="card-body">
+						<div class="product-image">
+							<img :src="/assets/images/external-logo/{{ x.name.split(' ').join('') }}.webp" alt="">
+						</div>
+						<div class="product-details">
+							<div class="product-name">{{ x.name }}</div>
+							<div class="product-description">Topup</div>
+						</div>
+					</div>
+				</a></div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="title"><i class="fa-solid fa-list-ul"></i> Daftar produk</div>
+			<div class="description">Produk di daftar ini diurutkan dari A-Z</div>
+			<div class="product-list row row-cols-1 row-cols-md-3 g-4">
+				<div class="col" sf-each="x in list"><a href="#page/store/{{ x.urlName }}" class="card">
+					<div class="card-body">
+						<div class="product-image">
+							<img :src="/assets/images/external-logo/{{ x.name.split(' ').join('') }}.webp" alt="">
+						</div>
+						<div class="product-details">
+							<div class="product-name">{{ x.name }}</div>
+							<div class="product-description">Topup</div>
+						</div>
+					</div>
+				</a></div>
+			</div>
+		</div>
+	</div>
+</sf-m>
+
+## js-global
+sf.model("service-store", My => {
+	My.list = [];
+
+	My.init = async function(){
+		await StoreProductCategoryList.wait;
+		My.list = StoreProductCategoryList;
+	}
+});
+
+## scss-global
+sf-m[name="service-store"] {
+	position: relative;
+	align-items: center;
+
+	.product-list {
+		margin-top: -10px;
+	}
+
+	.container > .row {
+		padding: 20px 0;
+		& > .title {
+			font-size: 24px;
+		}
+	}
+
+	.card {
+		background: #ceeaf7e8;
+		outline: 1px solid #3b3b858c;
+		border-radius: 20px;
+		box-shadow: 0 0 9px #c0cbff;
+		transition: all 0.3s linear;
+		&:hover {
+			box-shadow: 0 0 12px white;
+			outline: 2px solid white;
+			background: white;
+		}
+
+		.card-body{
+			display: inherit;
+			padding: 10px;
+		}
+
+		.product-image{
+			width: 86px;
+			height: 86px;
+			overflow: hidden;
+			display: inline-block;
+			border: 1px solid white;
+			border-radius: 20px;
+			img {
+				width: 100%;
+				height: 100%;
+			}
+		}
+		.product-details{
+			margin-left: 10px;
+			width: calc(100% - 120px);
+			display: inline-block;
+			align-content: center;
+			.product-name{
+				font-size: 20px;
+			}
+			.product-description{
+				font-size: 16px;
+			}
+		}
+	}
+}

@@ -1,0 +1,38 @@
+## html
+<sf-m name="terms-of-service">
+    <div>Umum</div>
+    <p>
+        1. Dengan mendaftarkan akun Akemizu otomatis anda telah menyetujui ketentuan layanan Akemizu.
+        2. Dilarang melakukan aktifitas kejahatan seperti hacking, deface, atau spamming/DDoS, dll.
+        3. Dilarang scrape, atau memberikan beban berlebih ke server.
+        4. Apabila ada pembelian tidak resmi (hacking), kecurangan, pencurian, atau menggunakan layanan untuk keperluan berkaitan dengan pencucian uang. Akemizu berhak membawamu ke jalur hukum.
+    </p>
+
+    <div>Akun</div>
+    <p>
+        1. Saldo di Akemizu tidak dapat ditarik/withdraw ke bank atau dicairkan menjadi uang rupiah ke e-wallet anda secara langsung.
+        2. Kami berhak memblokir akun anda bila ada aktifitas yang dapat merugikan kami, seperti hacking.
+        3. Kami tidak bertanggung jawab atas kehilangan akun anda.
+          - Mohon untuk tidak membagikan email/password akun ke orang lain, karena anda bisa saja kehilangan akses ke akun anda karena orang tsb.
+    </p>
+
+    <div>Layanan</div>
+    <p>
+        1. Harga layanan kami dapat berubah sewaktu-waktu tanpa pemberitahuan.
+        2. Kesalahan memasukkan UID atau ID akun game, serta orderan anda sudah menjadi status sukses bukan tanggung jawab kami.
+        3. Pesanan yang statusnya sudah sukses tidak dapat direfund, karena dana sudah diteruskan ke pihak ketiga atau pihak developer game.
+          - Hal ini demi menghindari ada pelanggan yang sudah menerima pesanannya tapi mengaku pesanannya tidak diterima dan minta refund.
+          - Jika statusnya masih pending atau error, masih bisa di refund jika tidak ada kendala dengan pihak ketiga.
+          - Jika errornya karena sistem pembayaran kami, masih bisa di refund atau di proses ulang setelah konfirmasi dari admin.
+    </p>
+</sf-m>
+
+## scss-global
+sf-m[name="terms-of-service"] {
+    background: black;
+}
+
+## js-global
+sf.model("terms-of-service", My => {
+    My.init = function(){}
+});

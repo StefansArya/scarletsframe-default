@@ -1,0 +1,98 @@
+## html
+<sf-m name="home">
+	<div class="container-lg d-flex flex-grow-1 justify-content-center align-items-center">
+		<div class="row the-content">
+			<div class="title"><i class="fa fa-solid fa-house-chimney"></i></div>
+			<div class="title">Selamat datang di website Akemizu</div>
+			<div class="description">Kamu mau menggunakan layanan apa nih?</div>
+
+			<div class="choices row row-cols-1 row-cols-md-3 g-4">
+				<div class="col"><a href="#page/store" class="card">
+					<div class="card-body">
+						<h5 class="card-title">Toko / Store</h5>
+						<p class="card-text">Tempat topup game atau beli voucher layanan lain</p>
+					</div>
+				</a></div>
+				<div class="col"><a href="#page/pilot" class="card">
+					<div class="card-body">
+						<h5 class="card-title">Joki / Pilot</h5>
+						<p class="card-text">Jasa rawat akun atau membantumu saat bermain</p>
+					</div>
+				</a></div>
+				<div class="col"><a href="#page/calculator" class="card">
+					<div class="card-body">
+						<h5 class="card-title">Calculator Game</h5>
+						<p class="card-text">Tempat melakukan perhitungan damage karaktermu</p>
+					</div>
+				</a></div>
+			</div>
+		</div>
+	</div>
+</sf-m>
+
+## js-global
+sf.model("home", My => {
+	My.message = "Hello";
+
+	My.init = function(){
+		if(location.origin !== 'http://localhost:6789')
+			views.goto('/maintenance');
+	}
+});
+
+## scss-global
+sf-m[name="home"] {
+	position: relative;
+	align-items: center;
+
+	.container-lg {
+		min-height: calc(100vh - 150px);
+
+		.the-content {
+			padding: 20px;
+			border-radius: 20px;
+			background: #2c3f4a73;
+			border: 1px solid #ffffff59;
+			box-shadow: 0 0 4px #007dc7;
+
+			& > .title, & > .description {
+				text-align: center;
+			}
+			& > .title {
+				font-size: 24px;
+			}
+			& > .description {
+				font-size: 16px;
+			}
+
+			.choices .col {
+				padding: 0 12px;
+			}
+
+			@media(max-width: 768px){
+				border-radius: 0;
+				border: none;
+				background: none;
+				box-shadow: none;
+			}
+		}
+		.card {
+			border: 1px solid #5ba0e74d;
+			background: #a3c0d9;
+
+			&:hover {
+				box-shadow: 0 0 5px #ffffff73;
+			}
+
+			h5 {
+				font-weight: bold;
+				text-align: center;
+			}
+
+			.card-text {
+				font-size: 15px;
+				text-align: center;
+			}
+		}
+	}
+}

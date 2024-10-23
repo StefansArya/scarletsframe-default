@@ -1,0 +1,504 @@
+## html
+<service-single-product>
+	<div class="product-header">
+		<div class="image">
+			<img :src="/assets/images/external-logo/{{ name.split(' ').join('') }}.webp" alt="">
+		</div>
+		<div class="details">
+			<div class="name">{{ nameAlt }}</div>
+			<div class="description">{{ description }}</div>
+		</div>
+	</div>
+
+	<div class="row order-container-root">
+		<div class="col-md-3">
+			<div class="sticky-lg-top info-sidebar">
+				<div class="title">Cara top up untuk {{ nameAlt }}:</div>
+				<div class="separator"></div>
+				<ol>
+					<li>Masukkan data akun tujuan</li>
+					<li>Pilih produk yang akan dibeli</li>
+					<li>Pilih metode pembayaran</li>
+					<li>Masukan informasi kontak yang dapat dihubungi jika orderanmu ada masalah</li>
+					<li>Periksa apakah orderanmu sesuai sebelum invoice dibuat</li>
+					<li>Tekan tombol Pesan sekarang</li>
+					<li>Lakukan pembayaran dan tunggu hingga selesai diproses oleh sistem atau diproses manual</li>
+					<li>Selesai</li>
+				</ol>
+			</div>
+		</div>
+		<div class="col-md-9">
+			<div class="container-lg">
+				<div class="row order-row-data account-data">
+					<div class="data-header">
+						<div class="step-number">1</div>
+						<div class="title">Masukan data akun tujuan</div>
+					</div>
+					<div class="row-description {{ requiredAccountDataField.length == 0 ? 'hide' : '' }}">Produk yang kamu beli akan dikirimkan langsung ke akun tujuan, pastikan data yang kamu masukkan sudah benar.</div>
+					<div class="row-description {{ requiredAccountDataField.length == 0 ? '' : 'hide' }}">Tidak ada data yang perlu di input, kamu akan mendapatkan note berisi kode atau voucher jika orderanmu berhasil.</div>
+					<div class="data-content row">
+						<div sf-each="index, x in requiredAccountDataField" class="col-md-6">
+							<div class="input-group">
+							{{@exec
+								let fieldBoxId = 'inputGroup' + x.name.replace(/\W/g, '_');
+
+								if(x.type === 'selection'){
+									let fieldBoxId = x.name.replace(/\W/g, '_');
+									{[
+										<div class="input-group">
+											<label class="input-group-text" for="{{ fieldBoxId }}">{{ x.name }}</label>
+											<select class="form-select" id="{{ fieldBoxId }}">
+												<option selected>Pilih disini...</option>
+											</select>
+										</div>
+									]};
+
+									setTimeout(() => {
+										let el = $('#'+fieldBoxId);
+										let list = x.options;
+										for(let i=0; i < list.length; i++){
+											el[0].add(new Option(list[i], list[i]));
+										}
+
+										el.on('change', function(){ accountData[index] = this.value; accountDataRefresh(); });
+									}, 1000);
+								}
+								else if(x.type === 'text' || x.type === 'number') {
+									{[
+										<span class="input-group-text">{{ x.name }}</span>
+										<input type="text" class="form-control" placeholder="..." id="{{ fieldBoxId }}"></input>
+									]};
+
+									setTimeout(() => {
+										$('#'+fieldBoxId).on('change', function(){ accountData[index] = this.value; accountDataRefresh(); });
+									}, 1000);
+								}
+							}}
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row order-row-data product-data">
+					<div class="data-header">
+						<div class="step-number">2</div>
+						<div class="title">Pilih produk yang akan dibeli</div>
+					</div>
+					<div class="data-content row g-3 gx-3 px-3">
+						<div sf-each="x in productList" class="col-md-4">
+							<div class="card-item" @click="productSelected(x.id, x.name, x.price)">
+								<div class="image"><img src="/assets/images/external-logo/GenshinImpact.webp" alt=""></div>
+								<div class="details">
+									<div class="title">{{ x.name }}</div>
+									<div class="price">{{ rupiahCurrency.format(x.price).replace(',00', '') }}</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row order-row-data payment-data">
+					<div class="data-header">
+						<div class="step-number">3</div>
+						<div class="title">Pilih metode pembayaran</div>
+					</div>
+					<div class="data-content" @click="paymentMethodSelected(event)">
+						<div sf-each="categoryTitle, categoryValue in PaymentMethodList">
+							<div class="category-title">{{ categoryValue.name }}</div>
+							<div class="category-content-list row g-3 gx-3 px-3">
+								<div sf-each="methodName, val in categoryValue.list" class="payment-choice col-md-4">
+									<div class="card-item">
+										<div class="image"><img src="/assets/images/external-logo/GenshinImpact.webp" alt=""></div>
+										<div class="details">
+											<div class="title">{{ methodName }}</div>
+											<div class="price" x-add="{{ val.add ?? '' }}" x-percent="{{ val.percent ?? '' }}"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row order-row-data contact-data">
+					<div class="data-header">
+						<div class="step-number">4</div>
+						<div class="title">Masukkan informasi kontak yang dapat dihubungi</div>
+					</div>
+					<div class="row-description">Kontak ini akan dihubungi jika terdapat masalah, kamu bisa lewati langkah ini jika sudah login.</div>
+					<div class="data-content">
+						<div class="input-group">
+							<span class="input-group-text">WhatsApp</span>
+							<input type="text" class="form-control" placeholder="+62896...">
+						</div>
+						<br>
+						<div class="input-group">
+							<span class="input-group-text">Email</span>
+							<input type="text" class="form-control" placeholder="your@email.address">
+						</div>
+					</div>
+				</div>
+				<div class="row order-row-data invoice-preview">
+					<div class="data-header">
+						<div class="step-number">5</div>
+						<div class="title">Preview orderanmu</div>
+					</div>
+					<div class="data-content">
+						<div class="small-invoice">
+							<div class="image"><img src="/assets/images/external-logo/GenshinImpact.webp" alt=""></div>
+							<div class="details">
+								<div class="title">{{ orderDetail.productTitle }} ({{ nameAlt }})</div>
+								<div class="user-data">{{ orderDetail.accountData }}</div>
+								<div class="payment-option">{{ orderDetail.paymentOption }} (fee: {{ orderDetail.paymentFee }})</div>
+								<div class="total-price">{{ orderDetail.totalPrice }}</div>
+								<div class="description">{{ orderDetail.description }}</div>
+							</div>
+						</div>
+					</div>
+					<div class="order-now-button" @click="confirmOrder">Pesan dan bayar sekarang</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</service-single-product>
+
+## js-global
+sf.component("service-single-product", My => {
+	My.currentProductName = "Name";
+	My.name = "Loading";
+	My.nameAlt = "Loading...";
+	My.description = "Loading...";
+
+	My.orderDetail = {
+		productTitle: '...',
+		paymentOption: '...',
+		accountData: '...',
+		paymentFee: 0,
+		totalPrice: 0,
+		description: '...',
+	};
+
+	My.accountData = [];
+	My.productList = [];
+	My.requiredAccountDataField = [];
+	My.PaymentMethodList = {};
+
+	My.rupiahCurrency = Intl.NumberFormat('id-ID', {
+		style: 'currency',
+		currency: 'IDR',
+	});
+
+	My.init = function(){
+		My.accountData = [];
+		My.productList = [];
+		My.requiredAccountDataField = [];
+
+		My.orderDetail = {
+			productTitle: '...',
+			paymentOption: '...',
+			accountData: '...',
+			paymentFee: 'Rp 0',
+			totalPrice: 'Rp 0',
+			price: 0,
+			description: '...',
+		};
+
+		My.refreshPage();
+	}
+
+	My.confirmOrder = function(){
+
+	}
+
+	My.accountDataRefresh = function(){
+		My.orderDetail.accountData = My.accountData.join(' - ');
+	}
+
+	My.productSelected = function(id, name, price){
+		My.orderDetail.productTitle = name;
+		My.orderDetail.price = price;
+
+		let paymentChoicePrice = My.$el('.payment-choice .details .price');
+		for (let i=0; i < paymentChoicePrice.length; i++) {
+			let ref = paymentChoicePrice.eq(i);
+			let add = ref.attr('x-add');
+			let percent = ref.attr('x-percent');
+
+			if(add) ref.text(My.rupiahCurrency.format(Math.ceil(price + (+add))).replace(',00', ''));
+			else if(percent) ref.text(My.rupiahCurrency.format(price + Math.ceil(price * (percent/100))).replace(',00', ''));
+		}
+	}
+
+	My.paymentMethodSelected = function(event){
+		let paymentItem = $(event.target).parent('.card-item');
+		let paymentItemCategory = paymentItem.parent('.category-content-list')[0].parentNode.sf$repeatListIndex;
+
+		if(paymentItemCategory === 'ManualDigitalWallet') {
+			My.orderDetail.description = "Transaksi akan diproses secara manual oleh admin\nkemungkinan akan ada delay jika menggunakan metode pembayaran ini";
+			My.orderDetail.paymentOption = paymentItem.find('.title').text() + ' - Manual';
+		}
+		else {
+			My.orderDetail.description = '';
+			My.orderDetail.paymentOption = paymentItem.find('.title').text() + ' - Otomatis';
+		}
+
+		let paymentData = paymentItem[0].parentNode.model;
+		let price = My.orderDetail.price;
+
+		let totalPrice = Math.ceil(paymentData.percent == null ? price + paymentData.add : (price + price * (paymentData.percent/100)));
+		My.orderDetail.paymentFee = My.rupiahCurrency.format(totalPrice - price).replace(',00', '');
+		My.orderDetail.totalPrice = My.rupiahCurrency.format(totalPrice).replace(',00', '');
+	}
+
+	My.refreshPage = async function(productName){
+		await StoreProductCategoryList.wait;
+		await PaymentMethodList.wait;
+		My.PaymentMethodList = PaymentMethodList;
+
+		productName ??= views.data.page;
+		if(My.currentProductName === productName) return;
+
+		let data = StoreProductCategorys[productName];
+		if(data == null) {
+			My.description = My.name = My.currentProductName = "Product not found";
+			return;
+		}
+
+		My.requiredAccountDataField = data.field;
+
+		My.name = data.name;
+		My.nameAlt = data.nameAlt ?? data.name;
+		My.description = data.description ?? 'Topup';
+
+    	My.productList = JSON.parse(await $.postJSON('https://akemizu.com/api/v1/getServices', {category: data.name}));
+	}
+});
+
+## scss-global
+service-single-product {
+	position: relative;
+	display: block;
+	align-items: center;
+	.order-container-root {
+		padding: 0 20px;
+		@media(max-width: 768px) {
+			padding: none;
+		}
+		.col-md-3 {
+			padding: 0;
+		}
+	}
+	.info-sidebar{
+		z-index: unset;
+		margin: 20px 0;
+		border-radius: 20px;
+		overflow: hidden;
+		background: black;
+		padding: 20px;
+		white-space: pre-line;
+		.title {
+			margin-top: -25px;
+			font-weight: bold;
+			font-size: 16px;
+			text-align: center;
+		}
+		.separator {
+			border-bottom: 1px solid white;
+			margin-top: -15px;
+		}
+		ol {
+			margin-top: -20px;
+			li {
+				margin-top: -18px;
+			}
+		}
+	}
+	.product-header{
+		width: 100%;
+		display: flex;
+		padding: 20px;
+		background: #585b60d1;
+		.image {
+			width: 128px;
+			height: 128px;
+			border-radius: 20px;
+			overflow: hidden;
+			box-shadow: 0 0 9px #fff8c5e8;
+			// box-shadow: 8px 6px 20px 0px #00000073;
+			img {
+				width: 100%;
+				height: 100%;
+			}
+		}
+		.details{
+			padding: 0 20px;
+			margin: auto 0;
+			.name {
+				font-size: 26px;
+				font-weight: bold;
+			}
+		}
+	}
+	.order-now-button{
+		width: 80%;
+		text-align: center;
+		background: #235f93;
+		border-radius: 20px;
+		margin: 10px auto;
+		padding: 10px;
+		cursor: pointer;
+	}
+
+	.row-description {
+		&.hide {
+			display: none;
+		}
+		margin-bottom: 10px;
+	}
+
+	.category-title {
+		font-size: 16px;
+		border-bottom: 1px dashed white;
+		font-weight: bold;
+	}
+
+	.category-content-list{
+		margin: -5px 0 25px 0;
+	}
+
+	.card-item {
+		background: #2b2b2be8;
+		outline: 1px solid #1f1f7a8c;
+		border-radius: 20px;
+		box-shadow: 0 0 9px #aab2d9;
+		transition: all 0.3s linear;
+		display: inherit;
+		padding: 5px;
+		display: flex;
+		cursor: pointer;
+
+		&:hover {
+			box-shadow: 0 0 12px white;
+			outline: 2px solid white;
+			background: grey;
+		}
+
+		.image{
+			width: 64px;
+			height: 64px;
+			overflow: hidden;
+			display: inline-block;
+			border: 1px solid white;
+			border-radius: 20px;
+			img {
+				width: 100%;
+				height: 100%;
+			}
+		}
+		.details{
+			margin-left: 10px;
+			width: calc(100% - 120px);
+			align-content: center;
+			.title {
+				font-size: 13px;
+			}
+			.price {
+				font-size: 12px;
+			}
+		}
+	}
+
+	.container-lg {
+		.order-row-data{
+			border-radius: 20px;
+			margin: 20px 0;
+    		overflow: hidden;
+			background: black;
+			padding: 10px 10px 20px 10px;
+
+			.input-group{
+				.input-group-text, .form-control, .form-select {
+					color: white;
+					background: #292929;
+					outline: 1px solid black;
+					border: none;
+					box-shadow: 0 0 8px white;
+					&:focus {
+						box-shadow: 0 0 8px white;
+					}
+					&::placeholder {
+						color: white;
+						opacity: 0.4;
+					}
+				}
+				.input-group-text {
+					letter-spacing: 1px;
+					font-weight: bold;
+					background: black;
+					// background: #264e8b;
+				}
+			}
+		}
+		.data-header{
+			display: flex;
+			font-weight: bold;
+			.step-number{
+				text-align: center;
+				padding: 4px;
+				width: 30px;
+				height: 30px;
+				overflow: hidden;
+				border-radius: 100%;
+				background: #2c91cdd1;
+				margin: auto 0;
+				box-shadow: 0 0 9px #55a9ffe0;
+			}
+			.title{
+				padding: 10px;
+				// background: grey;
+			}
+		}
+	}
+
+	.small-invoice{
+		width: 100%;
+		background: #363636;
+		padding: 20px;
+		border-radius: 20px;
+		border: 2px dashed #ffffff47;
+		.image {
+			width: 64px;
+			height: 64px;
+			border-radius: 20px;
+			overflow: hidden;
+			display: inline-block;
+			vertical-align: top;
+			img{
+				width: 100%;
+				height: 100%;
+			}
+		}
+		.details {
+			display: inline-block;
+			width: calc(100% - 100px);
+			margin-left: 10px;
+			.title{
+				font-weight: bold;
+				font-size: 20px;
+				border-bottom: 1px solid white;
+			}
+			.user-data{
+				font-size: 14px;
+			}
+			.payment-option{
+				font-size: 14px;
+			}
+			.total-price{
+				font-size: 20px;
+				color: #a3a3ff;
+			}
+			.description {
+				font-size: 16px;
+				white-space: pre-wrap;
+				color: grey;
+			}
+		}
+	}
+}
